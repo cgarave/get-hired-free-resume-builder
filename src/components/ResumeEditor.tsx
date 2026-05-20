@@ -9,14 +9,14 @@ import {
 
 interface ResumeEditorProps {
   data: ResumData
-  onUpdatePersonalInfo: (field: string, value: string) => void
+  onUpdatePersonalInfo: (field: "fullName" | "role" | "email" | "phone" | "location" | "website", value: string) => void
   onUpdateSectionTitle: (sectionId: string, title: string) => void
   onAddEntry: (sectionId: string) => void
   onUpdateEntry: (sectionId: string, entryId: string, field: string, value: string) => void
   onDeleteEntry: (sectionId: string, entryId: string) => void
   onAddSection: (title: string, type: SectionType) => void
   onDeleteSection: (sectionId: string) => void
-  onUpdateStyle: (field: string, value: string) => void
+  onUpdateStyle: (field: "fontSize" | "fontFamily" | "accent" | "spacing", value: string) => void
   onReset: () => void
 }
 
