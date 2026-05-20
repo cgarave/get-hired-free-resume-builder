@@ -1,6 +1,7 @@
 'use client'
 
-import { Download, FileJson, Share2 } from 'lucide-react'
+import { useState } from 'react'
+import { Download, FileJson, FileText, Loader2 } from 'lucide-react'
 import { ResumData } from '@/types/resume'
 
 interface ActionButtonsProps {
@@ -8,141 +9,127 @@ interface ActionButtonsProps {
 }
 
 export function ActionButtons({ data }: ActionButtonsProps) {
+  const [pdfLoading, setPdfLoading] = useState(false)
+  const [pdfError,   setPdfError]   = useState<string | null>(null)
+
+  /* ── JSON backup ────────────────────────────────────── */
   const downloadAsJSON = () => {
-    const element = document.createElement('a')
-    element.setAttribute(
-      'href',
-      'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(data, null, 2))
-    )
-    element.setAttribute('download', 'resume.json')
-    element.style.display = 'none'
-    document.body.appendChild(element)
-    element.click()
-    document.body.removeChild(element)
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
+    const url  = URL.createObjectURL(blob)
+    const a    = Object.assign(document.createElement('a'), { href: url, download: `${data.personalInfo.fullName || 'resume'}-backup.json` })
+    a.click()
+    URL.revokeObjectURL(url)
   }
 
+  /* ── HTML export ────────────────────────────────────── */
   const downloadAsHTML = () => {
-    const previewElement = document.getElementById('resume-preview')
-    if (!previewElement) return
+    const el = document.getElementById('resume-preview')
+    if (!el) return
 
-    const htmlContent = `
-<!DOCTYPE html>
+    const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${data.personalInfo.fullName} - Resume</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: ${
-              data.style.fontFamily === 'serif'
-                ? 'Merriweather, Georgia, serif'
-                : data.style.fontFamily === 'mono'
-                  ? 'Fira Code, monospace'
-                  : 'Inter, system-ui, sans-serif'
-            };
-            padding: 48px;
-            background: white;
-            color: #333;
-            line-height: 1.5;
-        }
-        @media (max-width: 768px) {
-            body {
-                padding: 24px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>${data.personalInfo.fullName} — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: white; }
+    a { color: inherit; }
+    ul { list-style-type: disc; }
+  </style>
 </head>
-<body>
-    ${previewElement.innerHTML}
-</body>
-</html>
-`
+<body>${el.outerHTML}</body>
+</html>`
 
-    const element = document.createElement('a')
-    element.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(htmlContent))
-    element.setAttribute('download', `${data.personalInfo.fullName}-resume.html`)
-    element.style.display = 'none'
-    document.body.appendChild(element)
-    element.click()
-    document.body.removeChild(element)
+    const blob = new Blob([html], { type: 'text/html' })
+    const url  = URL.createObjectURL(blob)
+    const a    = Object.assign(document.createElement('a'), { href: url, download: `${data.personalInfo.fullName || 'resume'}-resume.html` })
+    a.click()
+    URL.revokeObjectURL(url)
   }
 
+  /* ── PDF via @react-pdf/renderer (no browser needed) ── */
   const downloadAsPDF = async () => {
-    const previewElement = document.getElementById('resume-preview')
-    if (!previewElement) {
-      console.error('Resume preview element not found')
-      return
-    }
+    setPdfLoading(true)
+    setPdfError(null)
 
     try {
-      // Dynamically import html2pdf
-      const html2pdf = (await import('html2pdf.js')).default
+      // Send the raw resume data — the server renders the PDF using @react-pdf/renderer
+      const response = await fetch('/api/generate-pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
 
-      const opt = {
-        margin: [0, 0, 0, 0],
-        filename: `${data.personalInfo.fullName}-resume.pdf`,
-        image: { 
-          type: 'png',  // Changed from jpeg to png for better quality
-          quality: 1.0   // Maximum quality
-        },
-        html2canvas: { 
-          scale: 5,      // Increased from 2 to 5 for higher resolution (can go up to 6-8)
-          useCORS: true,
-          logging: false,
-          backgroundColor: '#ffffff'
-        },
-        jsPDF: { 
-          unit: 'mm', 
-          format: 'a4', 
-          orientation: 'portrait',
-          compress: true  // Enable compression to keep file size reasonable
-        },
-        pagebreak: { 
-          mode: ['avoid-all', 'css', 'legacy'],  // Better page break handling
-        }
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}))
+        throw new Error(err.detail ?? `Server error ${response.status}`)
       }
 
-      html2pdf().set(opt).from(previewElement).save()
-    } catch (error) {
-      console.error('Error generating PDF:', error)
-      alert('Failed to generate PDF. Please try again.')
+      const blob     = await response.blob()
+      const url      = URL.createObjectURL(blob)
+      const filename = `${data.personalInfo.fullName || 'resume'}-resume.pdf`
+      const a        = Object.assign(document.createElement('a'), { href: url, download: filename })
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
+    } catch (err: any) {
+      console.error('[PDF]', err)
+      setPdfError(err.message ?? 'Unknown error')
+    } finally {
+      setPdfLoading(false)
     }
   }
 
   return (
-    <div className="action-buttons fixed bottom-6 right-6 flex gap-3 flex-col sm:flex-row z-50">
-      <button
-        onClick={downloadAsJSON}
-        className="flex items-center justify-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-lg transition-all hover:shadow-xl active:scale-95 font-medium text-xs"
-        title="Save resume as JSON file"
-      >
-        <FileJson size={20} />
-        <span className="hidden sm:inline">JSON</span>
-      </button>
+    <>
+      {/* Error toast */}
+      {pdfError && (
+        <div className="action-buttons no-print fixed bottom-24 right-6 z-50 max-w-xs bg-red-600 text-white text-sm rounded-xl px-4 py-3 shadow-xl">
+          <strong>PDF failed:</strong> {pdfError}
+          <button className="ml-3 underline opacity-80 hover:opacity-100" onClick={() => setPdfError(null)}>
+            dismiss
+          </button>
+        </div>
+      )}
 
-      <button
-        onClick={downloadAsHTML}
-        className="flex items-center justify-center gap-2 px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 shadow-lg transition-all hover:shadow-xl active:scale-95 font-medium text-xs"
-        title="Download resume as HTML"
-      >
-        <Download size={20} />
-        <span className="hidden sm:inline">HTML</span>
-      </button>
+      {/* Floating buttons */}
+      <div className="action-buttons no-print fixed bottom-6 right-6 z-50 flex flex-col sm:flex-row gap-2">
+        {/* JSON */}
+        <button
+          onClick={downloadAsJSON}
+          title="Download backup as JSON"
+          className="flex items-center gap-2 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg hover:shadow-xl active:scale-95 font-medium transition-all"
+        >
+          <FileJson size={18} />
+          <span className="hidden sm:inline text-sm">JSON</span>
+        </button>
 
-      <button
-        onClick={downloadAsPDF}
-        className="flex items-center justify-center gap-2 px-3 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 shadow-lg transition-all hover:shadow-xl active:scale-95 font-medium text-xs"
-        title="Download resume as PDF"
-      >
-        <Share2 size={20} />
-        <span className="hidden sm:inline">PDF</span>
-      </button>
-    </div>
+        {/* HTML */}
+        <button
+          onClick={downloadAsHTML}
+          title="Download as HTML"
+          className="flex items-center gap-2 px-4 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl shadow-lg hover:shadow-xl active:scale-95 font-medium transition-all"
+        >
+          <Download size={18} />
+          <span className="hidden sm:inline text-sm">HTML</span>
+        </button>
+
+        {/* PDF */}
+        <button
+          onClick={downloadAsPDF}
+          disabled={pdfLoading}
+          title="Download as PDF"
+          className="flex items-center gap-2 px-4 py-3 bg-violet-600 hover:bg-violet-700 disabled:opacity-60 disabled:cursor-wait text-white rounded-xl shadow-lg hover:shadow-xl active:scale-95 font-medium transition-all min-w-[90px]"
+        >
+          {pdfLoading
+            ? <><Loader2 size={18} className="animate-spin" /><span className="hidden sm:inline text-sm">Generating…</span></>
+            : <><FileText size={18} /><span className="hidden sm:inline text-sm">PDF</span></>}
+        </button>
+      </div>
+    </>
   )
 }

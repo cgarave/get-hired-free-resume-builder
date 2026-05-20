@@ -107,21 +107,19 @@ export const defaultResumeData: ResumData = {
 }
 
 export const fontSizeMap = {
-  small: { heading: '28px', subheading: '14px', body: '11px' },
-  medium: { heading: '32px', subheading: '15px', body: '12px' },
+  small: { heading: '28px', subheading: '14px', body: '10px' },
+  medium: { heading: '32px', subheading: '15px', body: '11px' },
   large: { heading: '36px', subheading: '16px', body: '13px' },
 }
 
 export const fontFamilyMap: Record<string, string> = {
   sans: 'Inter, system-ui, sans-serif',
-  serif: 'Merriweather, Georgia, serif',
   times: '"Times New Roman", Times, serif',
   mono: '"Fira Code", monospace',
 }
 
 export const fontFamilyLabels: Record<string, string> = {
   sans: 'Sans-serif (Inter)',
-  serif: 'Serif (Merriweather)',
   times: 'Times New Roman',
   mono: 'Monospace (Fira Code)',
 }

@@ -7,7 +7,6 @@ import { ResumePreview } from '@/components/ResumePreview'
 import { ActionButtons } from '@/components/ActionButtons'
 import { Menu, X, Eye } from 'lucide-react'
 import Link from 'next/link'
-import { Analytics } from "@vercel/analytics/next"
 
 export default function Home() {
   const {
@@ -99,7 +98,6 @@ export default function Home() {
 
       {/* ── Floating Export Buttons ── */}
       <ActionButtons data={resume} />
-      <Analytics />
     </div>
   )
 }
