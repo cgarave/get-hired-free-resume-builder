@@ -46,12 +46,12 @@ export const fieldLabels: Record<string, string> = {
 
 export const defaultResumeData: ResumData = {
   personalInfo: {
-    fullName: 'Ravfore Jinoe Flores',
-    role: 'Software Engineer',
-    email: 'reyflores40@gmail.com',
-    phone: '+63 976-199-5527',
-    location: 'Philippines',
-    website: 'https://raveflores.vercel.app',
+    fullName: '',
+    role: '',
+    email: '',
+    phone: '',
+    location: '',
+    website: '',
   },
   sections: [
     {
@@ -61,21 +61,12 @@ export const defaultResumeData: ResumData = {
       entries: [
         {
           id: '1',
-          position: 'Frontend Designer & Developer',
-          company: 'Trentis Corporation',
-          duration: 'Feb 2025 — Nov 2025',
-          location: 'BGC, Taguig, Philippines',
+          position: '',
+          company: '',
+          duration: '',
+          location: '',
           description:
-            'Led frontend engineering efforts by developing and maintaining scalable web platform features.\nCollaborated closely with Product, UI/UX, Marketing, and Sponsorship teams.\nBuilt internal tools and automation systems that reduced manual processes by nearly 70%.',
-        },
-        {
-          id: '2',
-          position: 'Marketing Web Design Analyst',
-          company: 'Avantice Corporation',
-          duration: 'Jun 2024 — Dec 2024',
-          location: 'Makati, Philippines',
-          description:
-            'Created promotional banners, videos, and web content while maintaining consistent brand identity.\nContributed to frontend development by resolving technical issues and building new features.\nDeveloped my first internal tool automation system that improved team efficiency.',
+            '',
         },
       ],
     },
@@ -86,11 +77,11 @@ export const defaultResumeData: ResumData = {
       entries: [
         {
           id: '1',
-          degree: 'Bachelor of Science',
-          field: 'Computer Science',
-          school: 'University Name',
-          graduation: '2023',
-          description: 'Relevant coursework and honors',
+          degree: '',
+          field: '',
+          school: '',
+          graduation: '',
+          description: '',
         },
       ],
     },
@@ -102,7 +93,7 @@ export const defaultResumeData: ResumData = {
         {
           id: '1',
           skills:
-            'Frontend Development, Backend Development, API Integration, Digital Design, User Interface and Experience Design, Video Editing, Email Marketing Campaign',
+            '',
         },
       ],
     },
