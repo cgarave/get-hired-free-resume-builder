@@ -154,6 +154,7 @@ export function ResumePreview({ data }: ResumePreviewProps) {
         style={{
           padding: '48px',
           fontSize: fontSizes.body,
+            fontFamily: fontFamily,
           color: '#333',
           lineHeight: 1.55,
           minHeight: A4_HEIGHT,

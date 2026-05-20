@@ -1,13 +1,13 @@
-# ResumeCraft - Free Resume Builder
+# Get Hired - Free Resume Builder
 
-A modern, feature-rich resume builder built with Next.js 14 and Tailwind CSS. No AI, no subscription, 100% free. Fully customizable with live preview.
+A simple resume builder built with Next.js 14 and Tailwind CSS. No AI, no subscription, 100% free. Fully customizable with live preview.
 
 ## ✨ Features
 
 - **🎨 Live Preview**: See your resume update in real-time as you edit
 - **📝 Full Customization**: 
   - Font sizes (small, medium, large)
-  - Font families (Sans, Serif, Monospace)
+  - Font families (Sans, Serif, Monospace, Times New Roman)
   - Accent colors (preset or custom)
   - Spacing options (compact, normal, spacious)
 - **🔧 Flexible Sections**: Add, edit, and customize resume sections beyond the defaults
@@ -124,6 +124,7 @@ resume-builder/
 ### Font Families
 - **Sans-serif** (Inter): Clean, modern, professional
 - **Serif** (Merriweather): Elegant, traditional
+- **Times New Roman** (Times): Clean, professional
 - **Monospace** (Fira Code): Technical, code-focused
 
 ### Font Sizes

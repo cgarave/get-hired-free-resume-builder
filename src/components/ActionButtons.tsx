@@ -119,7 +119,7 @@ export function ActionButtons({ data }: ActionButtonsProps) {
     <div className="action-buttons fixed bottom-6 right-6 flex gap-3 flex-col sm:flex-row z-50">
       <button
         onClick={downloadAsJSON}
-        className="flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-lg transition-all hover:shadow-xl active:scale-95 font-medium"
+        className="flex items-center justify-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-lg transition-all hover:shadow-xl active:scale-95 font-medium text-xs"
         title="Save resume as JSON file"
       >
         <FileJson size={20} />
@@ -128,7 +128,7 @@ export function ActionButtons({ data }: ActionButtonsProps) {
 
       <button
         onClick={downloadAsHTML}
-        className="flex items-center justify-center gap-2 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 shadow-lg transition-all hover:shadow-xl active:scale-95 font-medium"
+        className="flex items-center justify-center gap-2 px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 shadow-lg transition-all hover:shadow-xl active:scale-95 font-medium text-xs"
         title="Download resume as HTML"
       >
         <Download size={20} />
@@ -137,7 +137,7 @@ export function ActionButtons({ data }: ActionButtonsProps) {
 
       <button
         onClick={downloadAsPDF}
-        className="flex items-center justify-center gap-2 px-4 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 shadow-lg transition-all hover:shadow-xl active:scale-95 font-medium"
+        className="flex items-center justify-center gap-2 px-3 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 shadow-lg transition-all hover:shadow-xl active:scale-95 font-medium text-xs"
         title="Download resume as PDF"
       >
         <Share2 size={20} />
