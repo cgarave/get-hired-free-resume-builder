@@ -6,6 +6,8 @@ import { ResumeEditor } from '@/components/ResumeEditor'
 import { ResumePreview } from '@/components/ResumePreview'
 import { ActionButtons } from '@/components/ActionButtons'
 import { Menu, X, Eye } from 'lucide-react'
+import Link from 'next/link'
+import { Analytics } from "@vercel/analytics/next"
 
 export default function Home() {
   const {
@@ -40,9 +42,10 @@ export default function Home() {
       {/* ── Header ── */}
       <header className="no-print shrink-0 z-40 bg-white border-b border-slate-200 shadow-sm">
         <div className="flex items-center justify-between px-5 py-3">
-          <div>
+          <div className={'flex flex-col gap-y-1'}>
             <h1 className="text-xl font-bold text-slate-900 leading-tight">Get Hired</h1>
-            <p className="text-xs text-slate-500">No subscription bullshit, ATS-friendly, 100% free resume builder.</p>
+            <p className="text-xs text-slate-500">No subscription, ATS-friendly, 100% free resume builder.</p>
+            <p className="text-xs text-slate-500">Built by <Link className={'text-blue-600 underline'} target={'_blank'} href="https://raveflores.vercel.app">Rave</Link></p>
           </div>
 
           {/* Mobile toggle */}
@@ -96,6 +99,7 @@ export default function Home() {
 
       {/* ── Floating Export Buttons ── */}
       <ActionButtons data={resume} />
+      <Analytics />
     </div>
   )
 }
