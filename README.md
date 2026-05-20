@@ -7,7 +7,7 @@ A simple resume builder built with Next.js 14 and Tailwind CSS. No AI, no subscr
 - **🎨 Live Preview**: See your resume update in real-time as you edit
 - **📝 Full Customization**: 
   - Font sizes (small, medium, large)
-  - Font families (Sans, Serif, Monospace, Times New Roman)
+  - Font families (Sans, Serif, Times New Roman, Monospace)
   - Accent colors (preset or custom)
   - Spacing options (compact, normal, spacious)
 - **🔧 Flexible Sections**: Add, edit, and customize resume sections beyond the defaults
@@ -15,7 +15,7 @@ A simple resume builder built with Next.js 14 and Tailwind CSS. No AI, no subscr
 - **📥 Export Options**:
   - Download as HTML file
   - Download as JSON (for backup or sharing)
-  - Print to PDF (using browser print feature)
+  - Print to PDF
 - **📱 Responsive Design**: Works seamlessly on desktop and mobile devices
 - **🚀 Zero Dependencies**: Built with modern web standards
 
@@ -51,11 +51,11 @@ npm run start
 
 ## 📖 Usage Guide
 
-### Editing Your Resume
+### Editing Resume
 
 1. **Personal Information**
-   - Enter your name, email, phone, location, and website
-   - This appears in the header of your resume
+   - Enter your name, role, email, phone, location, and website
+   - This appears in the header of the resume
 
 2. **Managing Sections**
    - Click the section header to expand/collapse
@@ -143,7 +143,7 @@ Custom color picker for any color you prefer
 
 ## 💾 Data Storage
 
-ResumeCraft stores your resume data in your browser's **localStorage**. This means:
+Get Hired stores your resume data in your browser's **localStorage**. This means:
 - ✅ Your data stays on your device (no server uploads)
 - ✅ Automatic saving - no need to manually save
 - ✅ Data persists across browser sessions
@@ -162,7 +162,7 @@ npm run lint    # Run ESLint
 ```
 
 ### Tech Stack
-- **Framework**: Next.js 14+ (App Router)
+- **Framework**: Next.js 14+
 - **Styling**: Tailwind CSS 3+
 - **Language**: TypeScript
 - **Icons**: Lucide React
@@ -193,16 +193,13 @@ export const defaultResumeData: ResumData = {
 }
 ```
 
-## 🎯 Future Enhancement Ideas
+## 🎯 Future Enhancement 
 
 - [ ] Multiple resume templates
 - [ ] Rich text editor for descriptions
-- [ ] Built-in PDF generation (without print)
 - [ ] Resume templates library
-- [ ] Import from LinkedIn
 - [ ] Dark mode
 - [ ] Internationalization (i18n)
-- [ ] Resume scoring/feedback
 - [ ] Share public resume links
 
 ## 📝 License
@@ -211,15 +208,12 @@ This project is open source and available under the MIT License.
 
 ## 🤝 Contributing
 
-Feel free to fork, modify, and improve ResumeCraft. Share your enhancements!
+Feel free to fork, modify, and improve Get Hired. Share your enhancements!
 
 ## ❓ FAQ
 
 **Q: Is my data safe?**
 A: Yes! Your resume data is stored locally on your device only. No data is sent to any server.
-
-**Q: Can I use this offline?**
-A: Not currently, but you can run it locally with `npm run dev`.
 
 **Q: How do I backup my resume?**
 A: Click the blue "JSON" button to download your resume as a JSON file. Import it back by modifying localStorage.
