@@ -37,9 +37,9 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-slate-100">
+    <div className="flex flex-col md:h-screen md:overflow-hidden">
       {/* ── Header ── */}
-      <header className="no-print shrink-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+      <header className="no-print sticky top-0 w-full shrink-0 z-40 bg-white border-b border-slate-200 shadow-sm">
         <div className="flex items-center justify-between px-5 py-3">
           <div className={'flex flex-col gap-y-1'}>
             <h1 className="text-xl font-bold text-slate-900 leading-tight">Get Hired</h1>
@@ -63,7 +63,7 @@ export default function Home() {
         <div
           className={`
             no-print shrink-0 w-full md:w-[380px] lg:w-[420px]
-            bg-white border-r border-slate-200 overflow-y-auto
+            bg-white border-r border-slate-200
             ${mobileView === 'editor' ? 'block' : 'hidden'} md:block
           `}
         >

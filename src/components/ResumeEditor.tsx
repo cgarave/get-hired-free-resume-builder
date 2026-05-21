@@ -70,7 +70,7 @@ export function ResumeEditor({
   }
 
   return (
-    <div className="h-full overflow-y-auto divide-y divide-gray-200">
+    <div className="h-full md:overflow-y-scroll divide-y divide-gray-200">
 
       {/* ── Customize (Collapsible) ── */}
       <div>
