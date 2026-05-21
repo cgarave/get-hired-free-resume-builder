@@ -5,10 +5,11 @@ import {
   Text,
   View,
   Link,
-  StyleSheet,
+  StyleSheet, Font,
 } from '@react-pdf/renderer'
 import { ResumData } from '@/types/resume'
 import { fontSizeMap, spacingMap } from '@/lib/resume-defaults'
+import path from 'path'
 
 /**
  * Built-in PDF fonts — no Font.register(), no network requests, never blank.
@@ -21,10 +22,59 @@ import { fontSizeMap, spacingMap } from '@/lib/resume-defaults'
  * Bold/italic must be set via fontFamily, NOT fontWeight/fontStyle,
  * unless you've registered variants with Font.register().
  */
+
+Font.register({
+  family: 'Merriweather',
+  fonts: [
+    {
+      src: path.join(
+          process.cwd(),
+          'public/fonts/Merriweather_24pt-Regular.ttf'
+      ),
+      fontWeight: 400,
+    },
+    {
+      src: path.join(
+          process.cwd(),
+          'public/fonts/Merriweather_24pt-Bold.ttf'
+      ),
+      fontWeight: 700,
+    },
+    {
+      src: path.join(
+          process.cwd(),
+          'public/fonts/Merriweather_24pt-Italic.ttf'
+      ),
+      fontStyle: 'italic'
+    },
+  ],
+})
+
+Font.register({
+  family: 'FiraCode',
+  fonts: [
+    {
+      src: path.join(
+          process.cwd(),
+          'public/fonts/FiraCode-Regular.ttf'
+      ),
+      fontWeight: 400,
+    },
+    {
+      src: path.join(
+          process.cwd(),
+          'public/fonts/FiraCode-Medium.ttf'
+      ),
+      fontWeight: 700,
+    }
+  ],
+})
+
 const PDF_FONTS: Record<string, { regular: string; bold: string; italic: string }> = {
   sans:  { regular: 'Helvetica',   bold: 'Helvetica-Bold',   italic: 'Helvetica-Oblique' },
+  serif:  { regular: 'Merriweather',   bold: 'Merriweather',   italic: 'Merriweather' },
   times: { regular: 'Times-Roman', bold: 'Times-Bold',       italic: 'Times-Italic'      },
-  mono:  { regular: 'Courier',     bold: 'Courier-Bold',     italic: 'Courier-Oblique'   },
+  mono:  { regular: 'FiraCode',     bold: 'FiraCode',     italic: 'Courier-Oblique'   },
 }
 
 interface Props { data: ResumData }
@@ -57,12 +107,14 @@ export function ResumePDFDocument({ data }: Props) {
     },
     name: {
       fontFamily: fonts.bold,
+      fontWeight: '700',
       fontSize: pt(sizes.heading),
       color: accent,
       textAlign: 'center',
     },
     role: {
       fontFamily: fonts.italic,
+      fontStyle: 'italic',
       fontSize: pt('16px'),
       color: '#555',
     },
@@ -89,6 +141,7 @@ export function ResumePDFDocument({ data }: Props) {
     },
     sectionTitle: {
       fontFamily: fonts.bold,
+      fontWeight: '700',
       fontSize: pt(sizes.subheading),
       color: accent,
       textTransform: 'uppercase',
@@ -108,6 +161,7 @@ export function ResumePDFDocument({ data }: Props) {
     },
     entryTitle: {
       fontFamily: fonts.bold,
+      fontWeight: '700',
       fontSize: pt(sizes.body),
       color: '#222222',
       flex: 1,
@@ -120,6 +174,7 @@ export function ResumePDFDocument({ data }: Props) {
     },
     entrySubtitle: {
       fontFamily: fonts.italic,
+      fontStyle: 'italic',
       fontSize: pt(sizes.body),
       color: '#555555',
       flex: 1,
@@ -164,6 +219,7 @@ export function ResumePDFDocument({ data }: Props) {
     },
     emptyNote: {
       fontFamily: fonts.italic,
+      fontStyle: 'italic',
       fontSize: pt(sizes.body) - 1,
       color: '#aaaaaa',
     },

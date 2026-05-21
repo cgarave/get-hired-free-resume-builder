@@ -114,14 +114,16 @@ export const fontSizeMap = {
 
 export const fontFamilyMap: Record<string, string> = {
   sans: 'Inter, system-ui, sans-serif',
+  serif: '"Merriweather", serif',
   times: '"Times New Roman", Times, serif',
-  mono: '"Fira Code", monospace',
+  mono: '"FiraCode", monospace',
 }
 
 export const fontFamilyLabels: Record<string, string> = {
   sans: 'Sans-serif (Inter)',
+  serif: 'Serif (Merriweather)',
   times: 'Times New Roman',
-  mono: 'Monospace (Fira Code)',
+  mono: 'Fira Code (Monospace)',
 }
 
 export const spacingMap = {
