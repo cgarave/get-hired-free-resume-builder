@@ -186,7 +186,7 @@ export function ResumePreview({ data }: ResumePreviewProps) {
               fontStyle: 'italic',
               fontWeight: 600,
               color: '#555',
-              marginTop: 10,
+              marginTop: 0,
               letterSpacing: '-0.5px',
           }}>
               {data.personalInfo.role}
