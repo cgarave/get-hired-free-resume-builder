@@ -123,7 +123,7 @@ export function ActionButtons({ data }: ActionButtonsProps) {
           onClick={downloadAsPDF}
           disabled={pdfLoading}
           title="Download as PDF"
-          className="flex items-center gap-2 px-4 py-3 bg-violet-600 hover:bg-violet-700 disabled:opacity-60 disabled:cursor-wait text-white rounded-xl shadow-lg hover:shadow-xl active:scale-95 font-medium transition-all min-w-[90px]"
+          className="flex items-center gap-2 px-4 py-3 bg-violet-600 hover:bg-violet-700 disabled:opacity-60 disabled:cursor-wait text-white rounded-xl shadow-lg hover:shadow-xl active:scale-95 font-medium transition-all"
         >
           {pdfLoading
             ? <><Loader2 size={18} className="animate-spin" /><span className="hidden sm:inline text-sm">Generating…</span></>
