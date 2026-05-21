@@ -1,13 +1,13 @@
 # Get Hired - Free Resume Builder
 
-A simple resume builder built with Next.js 14 and Tailwind CSS. No AI, no subscription, 100% free. Fully customizable with live preview.
+A simple resume builder built with Next.js 14 and Tailwind CSS. No AI, no subscription, 100% free. Customizable with live preview.
 
 ## ✨ Features
 
 - **🎨 Live Preview**: See your resume update in real-time as you edit
-- **📝 Full Customization**: 
+- **📝 Customization**: 
   - Font sizes (small, medium, large)
-  - Font families (Sans, Serif, Times New Roman, Monospace)
+  - Font families (Sans, Times New Roman, Monospace)
   - Accent colors (preset or custom)
   - Spacing options (compact, normal, spacious)
 - **🔧 Flexible Sections**: Add, edit, and customize resume sections beyond the defaults
@@ -18,36 +18,6 @@ A simple resume builder built with Next.js 14 and Tailwind CSS. No AI, no subscr
   - Print to PDF
 - **📱 Responsive Design**: Works seamlessly on desktop and mobile devices
 - **🚀 Zero Dependencies**: Built with modern web standards
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 18.x or higher
-- npm or yarn package manager
-
-### Installation
-
-1. **Clone or copy the project files**
-
-2. **Install dependencies**
-```bash
-npm install
-```
-
-3. **Run development server**
-```bash
-npm run dev
-```
-
-4. **Open in browser**
-Navigate to `http://localhost:3000`
-
-### Build for Production
-
-```bash
-npm run build
-npm run start
-```
 
 ## 📖 Usage Guide
 
@@ -91,6 +61,14 @@ npm run start
 - Select "Save as PDF" as the destination
 - Professional quality output
 
+## 💾 Data Storage
+
+U R Hired stores your resume data in your browser's **localStorage**. This means:
+- ✅ Your data stays on your device (no server uploads)
+- ✅ Automatic saving - no need to manually save
+- ✅ Data persists across browser sessions
+- ✅ Export your data as JSON for backup
+
 ## 🏗️ Project Structure
 
 ```
@@ -119,6 +97,36 @@ resume-builder/
 └── postcss.config.js
 ```
 
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18.x or higher
+- npm or yarn package manager
+
+### Installation
+
+1. **Clone or copy the project files**
+
+2. **Install dependencies**
+```bash
+npm install
+```
+
+3. **Run development server**
+```bash
+npm run dev
+```
+
+4. **Open in browser**
+   Navigate to `http://localhost:3000`
+
+### Build for Production
+
+```bash
+npm run build
+npm run start
+```
+
 ## 🎨 Customization Options
 
 ### Font Families
@@ -140,14 +148,6 @@ resume-builder/
 ### Accent Colors
 Preset colors: Slate, Blue, Green, Red, Purple, Gray, Black
 Custom color picker for any color you prefer
-
-## 💾 Data Storage
-
-Get Hired stores your resume data in your browser's **localStorage**. This means:
-- ✅ Your data stays on your device (no server uploads)
-- ✅ Automatic saving - no need to manually save
-- ✅ Data persists across browser sessions
-- ✅ Export your data as JSON for backup
 
 **Note**: Clearing browser data will delete your resume. Use "Download as JSON" to backup.
 
@@ -197,6 +197,7 @@ export const defaultResumeData: ResumData = {
 
 - [ ] Multiple resume templates
 - [ ] Rich text editor for descriptions
+- [ ] Drag & Drop reordering
 - [ ] Resume templates library
 - [ ] Dark mode
 - [ ] Internationalization (i18n)
