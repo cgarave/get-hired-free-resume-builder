@@ -99,35 +99,34 @@ export function ActionButtons({ data }: ActionButtonsProps) {
       {/* Floating buttons */}
       <div className="action-buttons no-print fixed bottom-6 right-6 z-50 flex flex-col sm:flex-row gap-2">
         {/* JSON */}
-        <button
+        {/* <button
           onClick={downloadAsJSON}
           title="Download backup as JSON"
-          className="flex items-center gap-2 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg hover:shadow-xl active:scale-95 font-medium transition-all"
-        >
+          className="flex items-center gap-2 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg hover:shadow-xl active:scale-95 font-medium transition-all">
           <FileJson size={18} />
           <span className="hidden sm:inline text-sm">JSON</span>
-        </button>
+        </button> */}
 
         {/* HTML */}
-        <button
+        {/* <button
           onClick={downloadAsHTML}
           title="Download as HTML"
           className="flex items-center gap-2 px-4 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl shadow-lg hover:shadow-xl active:scale-95 font-medium transition-all"
         >
           <Download size={18} />
           <span className="hidden sm:inline text-sm">HTML</span>
-        </button>
+        </button> */}
 
         {/* PDF */}
         <button
           onClick={downloadAsPDF}
           disabled={pdfLoading}
           title="Download as PDF"
-          className="flex items-center gap-2 px-4 py-3 bg-violet-600 hover:bg-violet-700 disabled:opacity-60 disabled:cursor-wait text-white rounded-xl shadow-lg hover:shadow-xl active:scale-95 font-medium transition-all"
+          className="flex items-center gap-2 px-4 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-60 disabled:cursor-wait text-white rounded-xl shadow-lg hover:shadow-xl active:scale-95 font-medium transition-all"
         >
           {pdfLoading
             ? <><Loader2 size={18} className="animate-spin" /><span className="hidden sm:inline text-sm">Generating…</span></>
-            : <><FileText size={18} /><span className="hidden sm:inline text-sm">PDF</span></>}
+            : <><Download size={18} /><span className="hidden sm:inline text-sm">PDF</span></>}
         </button>
       </div>
     </>
