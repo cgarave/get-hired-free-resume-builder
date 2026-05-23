@@ -1,108 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;600&display=swap');
+@import "tailwindcss";
+@plugin "daisyui";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+html,
 body {
-  background: #f8fafc;
-  color: #1e293b;
+    height: 100%;
+    background-color: #fff;
 }
 
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
+@layer base {
+    html {
+        color-scheme: light; /* important: disables browser dark overrides */
+    }
+
+    body {
+        @apply bg-white text-slate-900;
+        font-family: Inter, system-ui, sans-serif;
+    }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+@font-face {
+    font-family: "Merriweather";
+    src: url("/fonts/Merriweather_24pt-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
+@font-face {
+    font-family: "Merriweather";
+    src: url("/fonts/Merriweather_24pt-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+@font-face {
+    font-family: "Merriweather";
+    src: url("/fonts/Merriweather_24pt-Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-/* Print / PDF styles */
-@media print {
-  body {
-    background: white !important;
-  }
-
-  /* Hide all UI chrome */
-  .no-print {
-    display: none !important;
-  }
-
-  /* Only show the resume content */
-  #resume-preview {
-    padding: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-    background: white !important;
-    width: 100% !important;
-  }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-.animate-slide-in {
-  animation: slideIn 0.3s ease-in-out;
-}
-
-/* Input and button styles */
-input, textarea, select {
-  @apply transition-colors focus:outline-none;
-}
-
-input:focus, textarea:focus, select:focus {
-  @apply ring-2 ring-blue-500 ring-offset-0;
-}
-
-button:disabled {
-  @apply opacity-50 cursor-not-allowed;
+@font-face {
+    font-family: "FiraCode";
+    src: url("/fonts/FiraCode-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
 }
