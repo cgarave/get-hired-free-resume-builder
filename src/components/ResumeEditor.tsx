@@ -180,9 +180,8 @@ export function ResumeEditor({
                 <code className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600 flex-1">{data.style.accent}</code>
                 <button
                   onClick={onReset}
-                  className="flex items-center gap-1 text-xs text-red-600 hover:text-red-700 px-2 py-1 rounded hover:bg-red-50 border border-red-200"
-                >
-                  <RotateCcw size={12} /> Reset
+                  className="flex items-center gap-1 text-xs text-red-600 hover:text-red-700 px-2 py-1 rounded hover:bg-red-50 border border-red-200">
+                  <RotateCcw size={12} /> Reset Resume Content
                 </button>
               </div>
             </div>
