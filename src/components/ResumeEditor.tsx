@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 import { ResumData, SectionType } from '@/types/resume'
+import ResumeReviewButton from './ResumeReviewButton'
 import { fieldLabels, fontFamilyLabels, fontSizeMap, spacingMap } from '@/lib/resume-defaults'
 import {
-  Plus, Trash2, ChevronDown, ChevronUp, Sliders, RotateCcw,
+  Plus, Trash2, ChevronDown, ChevronUp, Sliders, RotateCcw
 } from 'lucide-react'
 
 interface ResumeEditorProps {
@@ -18,6 +19,22 @@ interface ResumeEditorProps {
   onDeleteSection: (sectionId: string) => void
   onUpdateStyle: (field: "fontSize" | "fontFamily" | "accent" | "spacing", value: string) => void
   onReset: () => void
+}
+
+interface ReviewData {
+  score: number,
+  issues: string[],
+  improvements: string[],
+  bulletPointFeedback: [{
+    original: string,
+    issue: string,
+    improved: string
+  }],
+  otherFeedback: [{
+    original: string,
+    issue: string,
+    improved: string
+  }]
 }
 
 const ACCENT_COLORS = [
@@ -49,6 +66,22 @@ export function ResumeEditor({
   )
   const [newSectionTitle, setNewSectionTitle] = useState('')
   const [newSectionType, setNewSectionType] = useState<SectionType>('custom')
+
+  const [reviewData, setReviewData] = useState<ReviewData>({
+    score: 0,
+    issues: [''],
+    improvements: [''],
+    bulletPointFeedback: [{
+      original: '',
+      issue: '',
+      improved: ''
+    }],
+    otherFeedback: [{
+        original: '',
+        issue: '',
+        improved: ''
+      }]
+  })
 
   const toggleSection = (id: string) => {
     const next = new Set(expandedSections)
@@ -338,11 +371,68 @@ export function ResumeEditor({
           <button
             onClick={handleAddSection}
             disabled={!newSectionTitle.trim()}
-            className="w-full py-2 bg-green-600 hover:bg-green-700 disabled:opacity-40 text-white rounded font-medium text-sm flex items-center justify-center gap-1.5 transition-colors"
+            className="w-full py-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white rounded font-medium text-sm flex items-center justify-center gap-1.5 transition-colors"
           >
             <Plus size={15} /> Add Section
           </button>
         </div>
+      </div>
+      {/*Review button*/}
+      <div className='px-5 py-4 flex flex-col gap-y-3'>
+        <p className="font-semibold text-gray-800">Review with Bard AI</p>
+        <div className="border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col">
+          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Score</p>
+          <h1 className='self-center text-4xl font-bold'>{reviewData.score ? reviewData.score : 0}</h1>
+          <div className='text-xs self-center'>
+            <p>{reviewData.score >= 90 ? 'Excellent ATS-ready resume' : ''}</p>
+            <p>{reviewData.score >= 80 && reviewData.score <= 89 ? 'Strong resume' : ''}</p>
+            <p>{reviewData.score >= 70 && reviewData.score <= 79 ? 'Good but needs optimization' : ''}</p>
+            <p>{reviewData.score >= 60 && reviewData.score <= 69 ? 'Weak ATS optimization' : ''}</p>
+            <p>{reviewData.score < 60 && reviewData.score > 1 ? 'High rejection risk' : ''}</p>
+          </div>
+        </div>
+        <div className={`border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col ${reviewData.issues.length - 1 === 0 ? 'hidden' : ''}`}>
+          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{reviewData.issues.length} Found Issues</p>
+          <ul className='list-disc list-inside text-xs space-y-2'>
+            {
+              reviewData.issues.flatMap(issue => (
+                <li key={issue}>{issue}</li>
+              ))
+            }
+          </ul>
+        </div>
+        <div className={`border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col ${reviewData.improvements.length - 1 === 0 ? 'hidden' : ''}`}>
+          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{reviewData.improvements.length} Improvements</p>
+          <ul className='list-disc list-inside text-xs space-y-2'>
+            {
+              reviewData.improvements.flatMap(improvement => (
+                <li key={improvement}>{improvement}</li>
+              ))
+            }
+          </ul>
+        </div>
+        <div className={`border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col ${reviewData.bulletPointFeedback.length - 1 === 0 ? 'hidden' : ''}`}>
+          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Feedback</p>
+          {
+            reviewData.bulletPointFeedback.flatMap((feedback) => (
+              <div className='text-xs flex flex-col gap-y-2 p-2 border border-dashed border-gray-300 rounded-lg'>
+                <p><span className='font-semibold'>Original:</span> {feedback.original}</p>
+                <p><span className='font-semibold'>Issue:</span> {feedback.issue}</p>
+                <p><span className='font-semibold'>Improved:</span> {feedback.improved}</p>
+              </div>
+            ))
+          }
+          {
+            reviewData.otherFeedback.flatMap((feedback) => (
+              <div className='text-xs flex flex-col gap-y-2 p-2 border border-dashed border-gray-300 rounded-lg'>
+                <p><span className='font-semibold'>Original:</span> {feedback.original}</p>
+                <p><span className='font-semibold'>Issue:</span> {feedback.issue}</p>
+                <p><span className='font-semibold'>Improved:</span> {feedback.improved}</p>
+              </div>
+            ))
+          }
+        </div>
+        <ResumeReviewButton resume={data} setReviewData={setReviewData}/>
       </div>
     </div>
   )
