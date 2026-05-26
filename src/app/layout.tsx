@@ -5,8 +5,12 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Get Hired - Free Resume Builder',
   description: 'Create a professional resume in minutes. No subscription. ATS-friendly. 100% free.',
-  viewport: 'width=device-width, initial-scale=1',
 }
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({
   children,

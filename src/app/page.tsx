@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Accordion from '@/components/Accordion'
-import Blob from '@/public/svg/blob.svg'
+
 
 export default function Home() {
   return (
@@ -21,10 +21,11 @@ export default function Home() {
               </div>
               <Accordion/>
           </div>
-          <div className={'text-xs text-zinc-600 md:mt-0 flex flex-row justify-between w-full'}>
-              <h5>Built by <Link href="https://raveflores.vercel.app" target={'_blank'} className={'font-bold text-blue-600'}>Rave</Link></h5>
-              <Link href={"/privacy-policy"} className={'text-blue-600'}>Privacy Policy</Link>
+          <div className={'text-xs text-zinc-900 md:mt-0 flex flex-row justify-between w-full'}>
+              <h5>Built by <Link href="https://raveflores.vercel.app" target={'_blank'} className={'font-medium underline md:text-white'}>Rave</Link></h5>
+              <Link href={"/privacy-policy"} className={'text-zinc-900 underline'}>Privacy Policy</Link>
           </div>
+          <img src="/svg/blob.svg" alt="blob" className='absolute top-0 -z-10 w-full h-screen object-cover'/>
       </div>
   )
 }
