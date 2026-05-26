@@ -330,7 +330,7 @@ export function ResumePDFDocument({ data }: Props) {
     <Document
       title={`${pi.fullName} — Resume`}
       author={pi.fullName}
-      creator="ResumeCraft"
+      creator="Get Hired"
     >
       <Page size="A4" style={styles.page}>
 

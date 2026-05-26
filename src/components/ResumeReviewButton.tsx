@@ -48,14 +48,14 @@ export default function ResumeReviewButton({ resume, setReviewData }: Props) {
         score: parsed.score,
         issues: parsed.issues,
         improvements: parsed.improvements,
-        bulletPointFeedback: parsed.bullet_point_feedback.map(item => (
+        bulletPointFeedback: parsed.bullet_point_feedback.map((item: { original: string, issue: string, improved: string}) => (
             {
                 original: item.original,
                 issue: item.issue,
                 improved: item.improved
             }
         )),
-        otherFeedback: parsed.other_feedback.map(item => (
+        otherFeedback: parsed.other_feedback.map((item: { original: string, issue: string, improved: string}) => (
             {
                 original: item.original,
                 issue: item.issue,

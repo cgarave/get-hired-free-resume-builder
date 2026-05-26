@@ -5,8 +5,9 @@ import { ResumData, SectionType } from '@/types/resume'
 import ResumeReviewButton from './ResumeReviewButton'
 import { fieldLabels, fontFamilyLabels, fontSizeMap, spacingMap } from '@/lib/resume-defaults'
 import {
-  Plus, Trash2, ChevronDown, ChevronUp, Sliders, RotateCcw
+  Plus, Trash2, ChevronDown, ChevronUp, Sliders, RotateCcw, Info
 } from 'lucide-react'
+import Link from 'next/link'
 
 interface ResumeEditorProps {
   data: ResumData
@@ -379,7 +380,16 @@ export function ResumeEditor({
       </div>
       {/*Review button*/}
       <div className='px-5 py-4 flex flex-col gap-y-3'>
-        <p className="font-semibold text-gray-800">Review with Bard AI</p>
+        <div className='flex flex-col gap-y-1'>
+          <p className="font-semibold text-gray-800">Review with Bard AI</p>
+          <div className='text-xs text-gray-400'>
+            <span>Disclaimer: Your resume will be processed by an AI service (Bard) to generate feedback. No data is permanently stored. </span>
+            <div className="tooltip tooltip-right">
+              <div className='tooltip-content w-60 text-left'>Bard AI is an AI agent that analyzes resumes like an ATS expert and a hiring manager.</div>
+              <Link href={'/'} className='text-sky-600'>Learn more about Bard</Link>
+            </div>
+          </div>
+        </div>
         <div className="border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col">
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Score</p>
           <h1 className='self-center text-4xl font-bold'>{reviewData.score ? reviewData.score : 0}</h1>
@@ -391,7 +401,7 @@ export function ResumeEditor({
             <p>{reviewData.score < 60 && reviewData.score > 1 ? 'High rejection risk' : ''}</p>
           </div>
         </div>
-        <div className={`border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col ${reviewData.issues.length - 1 === 0 ? 'hidden' : ''}`}>
+        <div className={`border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col transition-all duration-2000 ease-in-out ${reviewData.issues.length - 1 === 0 ? 'hidden opacity-0' : 'opacity-100'}`}>
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{reviewData.issues.length} Found Issues</p>
           <ul className='list-disc list-inside text-xs space-y-2'>
             {
