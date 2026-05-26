@@ -4,8 +4,7 @@ import Blob from '@/public/svg/blob.svg'
 
 export default function Home() {
   return (
-      <div className={'flex flex-col h-screen items-center justify-between p-5 md:pt-64'}>
-
+      <div className={'flex flex-col h-full items-center p-5 gap-y-10 md:justify-between md:pt-64'}>
           <div className={'flex flex-col gap-y-10 md:flex-row md:gap-x-24 md:items-start'}>
               <div className={'flex flex-col gap-y-4 max-w-2xl'}>
                   <h1 className={'text-2xl md:text-7xl font-bold align-top leading-none'}>Simple Resumes. Professional
@@ -22,9 +21,10 @@ export default function Home() {
               </div>
               <Accordion/>
           </div>
-          <h5 className={'text-xs text-zinc-600 my-20 md:my-0'}>
-              Built by <Link href="https://raveflores.vercel.app" target={'_blank'} className={'font-bold text-blue-600'}>Rave</Link>
-          </h5>
+          <div className={'text-xs text-zinc-600 md:mt-0 flex flex-row justify-between w-full'}>
+              <h5>Built by <Link href="https://raveflores.vercel.app" target={'_blank'} className={'font-bold text-blue-600'}>Rave</Link></h5>
+              <Link href={"/privacy-policy"} className={'text-blue-600'}>Privacy Policy</Link>
+          </div>
       </div>
   )
 }
