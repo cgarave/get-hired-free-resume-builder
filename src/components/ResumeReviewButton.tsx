@@ -66,8 +66,15 @@ export default function ResumeReviewButton({ resume, setReviewData }: Props) {
     setLoading(false);
   }
 
+  const isEmptyFields = 
+                        resume.personalInfo.fullName.length === 0 || 
+                        resume.personalInfo.role.length === 0 ||
+                        resume.personalInfo.email.length === 0 ||
+                        resume.personalInfo.location.length === 0 || 
+                        resume.personalInfo.phone.length === 0
+  
   return (
-    <button onClick={reviewResume} className="w-full py-2 bg-violet-600 hover:bg-violet-700 disabled:opacity-40 text-white rounded font-medium text-sm flex items-center justify-center gap-1.5 transition-colors cursor-pointer">
+    <button disabled={isEmptyFields || resume.sections.length === 0 ? true : false} onClick={reviewResume} className="w-full py-2 bg-violet-600 hover:bg-violet-700 disabled:opacity-40 text-white rounded font-medium text-sm flex items-center justify-center gap-1.5 transition-colors cursor-pointer">
       {loading ? <>
                     <Loader2 size={20} className="animate-spin"/>
                     <span>Reviewing</span>
