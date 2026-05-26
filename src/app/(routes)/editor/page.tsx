@@ -41,9 +41,7 @@ export default function Page() {
             {/* ── Header ── */}
             <header className="no-print sticky top-0 w-full shrink-0 z-40 bg-white border-b border-slate-200 shadow-sm">
                 <div className="flex items-center justify-between px-5 py-3">
-                    <div className={'flex flex-col gap-y-1'}>
-                        <h1 className="text-xl font-bold text-slate-900 leading-tight font-serif italic">Get Hired</h1>
-                    </div>
+                    <Link href={'/'}><h1 className="text-xl font-bold text-slate-900 leading-tight font-serif italic">Get Hired</h1></Link>
 
                     {/* Mobile toggle */}
                     <button
