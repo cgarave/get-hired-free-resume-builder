@@ -53,51 +53,7 @@ export const defaultResumeData: ResumData = {
     location: '',
     website: '',
   },
-  sections: [
-    {
-      id: 'experience',
-      title: 'EXPERIENCE',
-      type: 'experience',
-      entries: [
-        {
-          id: '1',
-          position: '',
-          company: '',
-          duration: '',
-          location: '',
-          description:
-            '',
-        },
-      ],
-    },
-    {
-      id: 'education',
-      title: 'EDUCATION',
-      type: 'education',
-      entries: [
-        {
-          id: '1',
-          degree: '',
-          field: '',
-          school: '',
-          graduation: '',
-          description: '',
-        },
-      ],
-    },
-    {
-      id: 'skills',
-      title: 'SKILLS',
-      type: 'skills',
-      entries: [
-        {
-          id: '1',
-          skills:
-            '',
-        },
-      ],
-    },
-  ],
+  sections: [],
   style: {
     fontSize: 'medium',
     fontFamily: 'sans',
