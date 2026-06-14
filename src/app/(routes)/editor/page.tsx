@@ -39,11 +39,23 @@ export default function Page() {
     return (
         <div className="flex flex-col md:h-screen md:overflow-hidden">
             {/* ── Header ── */}
-            <header className="no-print sticky top-0 w-full shrink-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+            <header className="sticky top-0 w-full shrink-0 z-40 border-b border-zinc-800 shadow-sm backdrop-blur-sm">
+                <nav className="flex items-center justify-between px-6 md:px-60 py-5 gap-x-4">
+                    <div className='flex flex-col gap-y-1'>
+                        <Link href={'/'}><h1 className="text-xl font-bold leading-tight font-serif italic">Get Hired</h1></Link>
+                        <p className='text-zinc-400 text-xs'>Note: Get Hired is currently being upgraded to v2. If you run into any critical bugs, please let me know — your feedback helps make the app better. <Link className='underline' href={'mailto:raevflores@gmail.com'}>Report</Link></p>
+                    </div>
+                    {/* Mobile toggle */}
+                    <button onClick={() => setMobileView(mobileView === 'editor' ? 'preview' : 'editor')}
+                        className="md:hidden flex items-center gap-2 px-3 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg text-sm font-medium text-slate-700 transition-colors">
+                        {mobileView === 'editor' ? <><Eye size={16} /> Preview</> : <><Menu size={16} /> Edit</>}
+                    </button>
+                </nav>
+            </header>
+            {/* <header className="no-print sticky top-0 w-full shrink-0 z-40 bg-white border-b border-slate-200 shadow-sm">
                 <div className="flex items-center justify-between px-5 py-3">
                     <Link href={'/'}><h1 className="text-xl font-bold text-slate-900 leading-tight font-serif italic">Get Hired</h1></Link>
 
-                    {/* Mobile toggle */}
                     <button
                         onClick={() => setMobileView(mobileView === 'editor' ? 'preview' : 'editor')}
                         className="md:hidden flex items-center gap-2 px-3 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg text-sm font-medium text-slate-700 transition-colors"
@@ -51,7 +63,7 @@ export default function Page() {
                         {mobileView === 'editor' ? <><Eye size={16} /> Preview</> : <><Menu size={16} /> Edit</>}
                     </button>
                 </div>
-            </header>
+            </header> */}
 
             {/* ── Main Layout ── */}
             <div className="flex flex-1 min-h-0">
