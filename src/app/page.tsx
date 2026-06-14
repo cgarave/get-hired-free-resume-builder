@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <main className={'flex flex-col items-center gap-y-10'}>
             <header className="sticky top-0 w-full shrink-0 z-40 border-b border-zinc-800 shadow-sm backdrop-blur-sm">
-                <nav className="flex items-center justify-between px-10 md:px-60 py-5">
+                <nav className="flex items-center justify-between px-6 md:px-60 py-5">
                     <Link href={'/'}><h1 className="text-xl font-bold leading-tight font-serif italic">Get Hired</h1></Link>
                     <Link href={'/editor'}><button className='rounded-full py-2 px-5 bg-white hover:bg-white/80 text-slate-900 text-xs font-semibold uppercase'>Get Started</button></Link>
                 </nav>
@@ -20,7 +20,7 @@ export default function Home() {
                 <Link href={'/editor'}>
                     <button className='rounded-full py-3 px-5 mt-4 md:mt-10 bg-white hover:bg-white/80 text-slate-900 text-sm font-semibold uppercase'>Create Resume</button>
                 </Link>
-                <div className="stats stats-horizontal shadow mt-10 uppercase font-semibold tracking-wider">
+                <div className="stats stats-vertical md:stats-horizontal shadow mt-10 uppercase font-semibold tracking-wider">
                     <div className="stat space-y-2">
                         <div className="stat-title text-zinc-500">Downloads</div>
                         <div className="stat-value">1,789</div>
@@ -36,34 +36,30 @@ export default function Home() {
             <div className='w-full h-[1px] bg-zinc-800'></div>
             <div className='text-center'>
                 <h5 className='text-zinc-200 uppercase tracking-wider font-semibold text-xl font-serif text-center mb-4'>Features</h5>
-                <div className="md:grid md:grid-cols-2 stats stats-vertical lg:stats-horizontal shadow">
-                    <div className="stat">
-                        <div className="stat-title text-zinc-200 font-semibold tracking-wider uppercase">Data Security</div>
-                        <div className="stat-desc text-zinc-500">Your data is yours and yours only.</div>
+                <div className='grid grid-cols-2 text-zinc-500 text-xs'>
+                    <div className='border-l border-t border-b border-zinc-800 p-8'>
+                        <div className='uppercase font-semibold text-zinc-200'>Data Security</div>
+                        <div>Your data is yours and yours only.</div>
                     </div>
-                    <div className="stat">
-                        <div className="stat-title text-zinc-200 font-semibold tracking-wider uppercase">AI-Powered</div>
-                        <div className="stat-desc text-zinc-500">Bard AI acts as an ATS Expert and a Hiring Manager</div>
+                    <div className='border border-zinc-800 p-8'>
+                        <div className='uppercase font-semibold text-zinc-200'>AI-Powered</div>
+                        <div>An AI that acts as an ATS Expert and a Hiring Manager</div>
                     </div>
-                </div>
-                <div className="md:grid md:grid-cols-2 stats stats-vertical lg:stats-horizontal shadow">
-                    <div className="stat">
-                        <div className="stat-title text-zinc-200 font-semibold tracking-wider uppercase">Flexibility</div>
-                        <div className="stat-desc text-zinc-500">Personalize your resume with any colors, fonts or designs, and make it your own.</div>
+                    <div className='border-l border-r border-zinc-800 p-8'>
+                        <div className='uppercase font-semibold text-zinc-200'>Flexibility</div>
+                        <div>Personalize your resume with any colors, fonts or designs, and make it your own.</div>
                     </div>
-                    <div className="stat">
-                        <div className="stat-title text-zinc-200 font-semibold tracking-wider uppercase">Reactive Preview</div>
-                        <div className="stat-desc text-zinc-500">See every change instantly as you type.</div>
+                    <div className='border-r border-zinc-800 p-8'>
+                        <div className='uppercase font-semibold text-zinc-200'>Reactive Preview</div>
+                        <div>See every change instantly as you type.</div>
                     </div>
-                </div>
-                <div className="md:grid md:grid-cols-2 stats stats-vertical lg:stats-horizontal shadow">
-                    <div className="stat">
-                        <div className="stat-title text-zinc-200 font-semibold tracking-wider uppercase">Flexibility</div>
-                        <div className="stat-desc text-zinc-500">Personalize your resume with any colors, fonts or designs, and make it your own.</div>
+                    <div className='border-l border-t border-b border-zinc-800 p-8'>
+                        <div className='uppercase font-semibold text-zinc-200'>Instant Download</div>
+                        <div>Export your resume to PDF instantly, without any waiting or delays.</div>
                     </div>
-                    <div className="stat">
-                        <div className="stat-title text-zinc-200 font-semibold tracking-wider uppercase">Instant Download</div>
-                        <div className="stat-desc text-zinc-500">Export your resume to PDF instantly, without any waiting or delays.</div>
+                    <div className='border border-zinc-800 p-8'>
+                        <div className='uppercase font-semibold text-zinc-200'>No Advertising, No Tracking</div>
+                        <div>For a secure and distraction-free experience.</div>
                     </div>
                 </div>
             </div>
