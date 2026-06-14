@@ -234,7 +234,7 @@ export function ResumeEditor({
         </button>
 
         {personalOpen && (
-          <div className="px-5 pb-5 space-y-3 border-t border-gray-100">
+          <div className="px-5 pb-5 space-y-3 border-t border-gray-100 text-black"> {/* Added text-black to temporarily fix the global white text issue */}
             {(
               [
                 ['fullName', 'Full Name', 'text'],
@@ -265,7 +265,7 @@ export function ResumeEditor({
 
         <div className="space-y-2 mb-4">
           {data.sections.map((section) => (
-            <div key={section.id} className="border border-gray-200 rounded-lg overflow-hidden">
+            <div key={section.id} className="border border-gray-200 rounded-lg overflow-hidden text-black"> {/* Added text-black to temporarily fix the global white text issue */}
               {/* Section header */}
               <div className="flex items-center bg-gray-50 hover:bg-gray-100 transition-colors">
                 <button
@@ -349,7 +349,7 @@ export function ResumeEditor({
         </div>
 
         {/* Add new section */}
-        <div className="border border-dashed border-gray-300 rounded-lg p-3 space-y-2">
+        <div className="border border-dashed border-gray-300 rounded-lg p-3 space-y-2 text-black"> {/* Added text-black to temporarily fix the global white text issue */}
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Add New Section</p>
           <input
             type="text"
