@@ -20,44 +20,44 @@ export default function Home() {
                 <Link href={'/editor'}>
                     <button className='rounded-full py-3 px-5 mt-4 md:mt-10 bg-white hover:bg-white/80 text-slate-900 text-sm font-semibold uppercase'>Create Resume</button>
                 </Link>
-                <div className="stats stats-vertical md:stats-horizontal shadow mt-10 uppercase font-semibold tracking-wider">
-                    <div className="stat space-y-2">
-                        <div className="stat-title text-zinc-500">Downloads</div>
-                        <div className="stat-value">1,789</div>
-                        <div className="stat-desc text-zinc-500">Total resume converted<br /> into professional template</div>
+                <div className='grid grid-cols-2 divide-x divide-zinc-800 mt-4 md:mt-10 uppercase text-[10px] md:text-sm'>
+                    <div className='p-4 space-y-2 md:space-y-4'>
+                        <div className="text-zinc-500 font-semibold">Downloads</div>
+                        <div className="text-3xl font-bold drop-shadow-sm drop-shadow-white/50">1,382</div>
+                        <div className="text-zinc-500">Total resume converted<br /> into professional template</div>
                     </div>
-                    <div className="stat space-y-2">
-                        <div className="stat-title text-zinc-500">Resume Reviewed</div>
-                        <div className="stat-value">1,129</div>
-                        <div className="stat-desc text-zinc-500">Total resume reviewed<br />& improved by Bard AI</div>
+                    <div className='p-4 space-y-2 md:space-y-4'>
+                        <div className="text-zinc-500 font-semibold">Resume Reviewed</div>
+                        <div className="text-3xl font-bold drop-shadow-sm drop-shadow-white/50">792</div>
+                        <div className="text-zinc-500">Total resume reviewed<br />& improved by Bard AI</div>
                     </div>
                 </div>
             </div>
             <div className='w-full h-[1px] bg-zinc-800'></div>
             <div className='text-center'>
                 <h5 className='text-zinc-200 uppercase tracking-wider font-semibold text-xl font-serif text-center mb-4'>Features</h5>
-                <div className='grid grid-cols-2 text-zinc-500 text-xs'>
-                    <div className='border-l border-t border-b border-zinc-800 p-8'>
+                <div className='grid grid-cols-2 text-zinc-500 text-xs md:text-sm'>
+                    <div className='border-l border-t border-b border-zinc-800 p-8 space-y-1'>
                         <div className='uppercase font-semibold text-zinc-200'>Data Security</div>
                         <div>Your data is yours and yours only.</div>
                     </div>
-                    <div className='border border-zinc-800 p-8'>
+                    <div className='border border-zinc-800 p-8 space-y-1'>
                         <div className='uppercase font-semibold text-zinc-200'>AI-Powered</div>
                         <div>An AI that acts as an ATS Expert and a Hiring Manager</div>
                     </div>
-                    <div className='border-l border-r border-zinc-800 p-8'>
+                    <div className='border-l border-r border-zinc-800 p-8 space-y-1'>
                         <div className='uppercase font-semibold text-zinc-200'>Flexibility</div>
                         <div>Personalize your resume with any colors, fonts or designs, and make it your own.</div>
                     </div>
-                    <div className='border-r border-zinc-800 p-8'>
+                    <div className='border-r border-zinc-800 p-8 space-y-1'>
                         <div className='uppercase font-semibold text-zinc-200'>Reactive Preview</div>
                         <div>See every change instantly as you type.</div>
                     </div>
-                    <div className='border-l border-t border-b border-zinc-800 p-8'>
+                    <div className='border-l border-t border-b border-zinc-800 p-8 space-y-1'>
                         <div className='uppercase font-semibold text-zinc-200'>Instant Download</div>
                         <div>Export your resume to PDF instantly, without any waiting or delays.</div>
                     </div>
-                    <div className='border border-zinc-800 p-8'>
+                    <div className='border border-zinc-800 p-8 space-y-1'>
                         <div className='uppercase font-semibold text-zinc-200'>No Advertising, No Tracking</div>
                         <div>For a secure and distraction-free experience.</div>
                     </div>
