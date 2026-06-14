@@ -39,7 +39,7 @@ export default function Page() {
     return (
         <div className="flex flex-col md:h-screen md:overflow-hidden">
             {/* ── Header ── */}
-            <header className="sticky top-0 w-full shrink-0 z-40 border-b border-zinc-800 shadow-sm backdrop-blur-sm">
+            <header className="top-0 w-full shrink-0 z-40 border-b border-zinc-800 shadow-sm backdrop-blur-sm">
                 <nav className="flex items-center justify-between px-6 md:px-60 py-5 gap-x-4">
                     <div className='flex flex-col gap-y-1'>
                         <Link href={'/'}><h1 className="text-xl font-bold leading-tight font-serif italic">Get Hired</h1></Link>
