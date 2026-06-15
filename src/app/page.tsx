@@ -1,9 +1,15 @@
 import Link from 'next/link'
 import Accordion from '@/components/Accordion'
-import { Star } from 'lucide-react'
+import prisma from "@/lib/prisma";
 
 
-export default function Home() {
+export default async function Home() {
+    const downloadCount = await prisma.downloadsCount.findUnique({
+        where: {id: 2}
+    })
+    const reviewedCount = await prisma.reviewedResume.findUnique({
+        where: {id: 2}
+    })
     return (
         <main className={'flex flex-col items-center gap-y-10'}>
             <header className="sticky top-0 w-full shrink-0 z-40 border-b border-zinc-800 shadow-sm backdrop-blur-sm">
@@ -16,20 +22,20 @@ export default function Home() {
                 <h1 className={'text-4xl md:text-6xl font-bold align-top leading-none'}>Simple Resumes.</h1>
                 <h1 className={'text-4xl md:text-6xl font-bold align-top leading-none'}>Professional Results.</h1>
                 <h1 className={'text-4xl md:text-6xl font-bold align-top leading-none font-serif italic'}>Get Hired.</h1>
-                <p className='text-zinc-500 text-sm px-4 md:px-0 md:text-lg'>A modern, ATS-friendly resume builder designed for professionals by professionals — fully customizable and 100% free forever.</p>
+                <p className='text-zinc-500 text-sm px-4 md:px-0 md:text-lg'>Build a professional ATS-friendly resume in minutes. No account required. No subscriptions. No paywalls. Ever.</p>
                 <Link href={'/editor'}>
                     <button className='rounded-full py-3 px-5 mt-4 md:mt-10 bg-white hover:bg-white/80 text-slate-900 text-sm font-semibold uppercase'>Create Resume</button>
                 </Link>
                 <div className='grid grid-cols-2 divide-x divide-zinc-800 mt-4 md:mt-10 uppercase text-[10px] md:text-sm'>
                     <div className='p-4 space-y-2 md:space-y-4'>
-                        <div className="text-zinc-500 font-semibold">Downloads</div>
-                        <div className="text-3xl font-bold drop-shadow-sm drop-shadow-white/50">1,382</div>
-                        <div className="text-zinc-500">Total resume converted<br /> into professional template</div>
+                        <div className="text-zinc-500 font-semibold">Resume Created</div>
+                        <div className="text-3xl font-bold drop-shadow-sm drop-shadow-white/50">{downloadCount?.count}</div>
+                        <div className="text-zinc-500 text-[10px] md:text-xs">Resumes successfully generated<br /> using Get Hired</div>
                     </div>
                     <div className='p-4 space-y-2 md:space-y-4'>
-                        <div className="text-zinc-500 font-semibold">Resume Reviewed</div>
-                        <div className="text-3xl font-bold drop-shadow-sm drop-shadow-white/50">792</div>
-                        <div className="text-zinc-500">Total resume reviewed<br />& improved by Bard AI</div>
+                        <div className="text-zinc-500 font-semibold">AI Resume Reviews</div>
+                        <div className="text-3xl font-bold drop-shadow-sm drop-shadow-white/50">{reviewedCount?.count}</div>
+                        <div className="text-zinc-500 text-[10px] md:text-xs">Total resume reviewed<br />& improved by Bard AI</div>
                     </div>
                 </div>
             </div>
@@ -43,7 +49,7 @@ export default function Home() {
                     </div>
                     <div className='border border-zinc-800 p-8 space-y-1'>
                         <div className='uppercase font-semibold text-zinc-200'>AI-Powered</div>
-                        <div>An AI that acts as an ATS Expert and a Hiring Manager</div>
+                        <div>Receive actionable feedback from AI trained to evaluate resumes like ATS systems and hiring managers.</div>
                     </div>
                     <div className='border-l border-r border-zinc-800 p-8 space-y-1'>
                         <div className='uppercase font-semibold text-zinc-200'>Flexibility</div>
@@ -58,8 +64,12 @@ export default function Home() {
                         <div>Export your resume to PDF instantly, without any waiting or delays.</div>
                     </div>
                     <div className='border border-zinc-800 p-8 space-y-1'>
-                        <div className='uppercase font-semibold text-zinc-200'>No Advertising, No Tracking</div>
-                        <div>For a secure and distraction-free experience.</div>
+                        <div className='uppercase font-semibold text-zinc-200'>ATS-friendly Template</div>
+                        <div>Never skipped by the system again by using our template.</div>
+                    </div>
+                    <div className='border border-zinc-800 p-8 space-y-1 col-span-2'>
+                        <div className='uppercase font-semibold text-zinc-200'>100% Free Forever</div>
+                        <div>Unlike most resume builders, Get Hired never locks downloads behind subscriptions or paywalls. Build your resume, download it instantly, and move on with your job search.</div>
                     </div>
                 </div>
             </div>
@@ -90,12 +100,16 @@ export default function Home() {
                 </section>
                 <section className='md:w-1/2 space-y-4 text-sm'>
                     <h5 className='text-zinc-200 uppercase tracking-wider font-semibold text-xl font-serif'>A note from the creator</h5>
-                    <p>Hi, I'm Rave</p>
+                    <p>Hi, I'm Rave.</p>
                     <p>I built Get Hired because I experienced the same frustrations many job seekers face. What started as a late-night attempt to update my own resume quickly turned into a project that I felt could help others too.</p>
                     <p>My goal was simple: create a resume builder that is professional, ATS-friendly, easy to use, and accessible to everyone without subscriptions or hidden paywalls.</p>
                     <p>I hope Get Hired helps you spend less time worrying about formatting and more time focusing on your next opportunity.</p>
                     <p>If this tool helps even one person land their next job, then the overnight build was worth it.</p>
                     <p>Good luck with your job search, and thank you for using Get Hired.</p>
+                    <div>
+                        <Link href={'https://raveflores.vercel.app'} className='underline'>More about me</Link>
+                        
+                    </div>
                 </section>
             </footer>
             {/* <img src="/svg/blob.svg" alt="blob" className='absolute top-0 -z-10 w-full h-screen object-cover'/> */}

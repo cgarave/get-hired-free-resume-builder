@@ -52,3 +52,4 @@ next-env.d.ts
 *.pem
 .vercel
 turbo
+/generated/prisma

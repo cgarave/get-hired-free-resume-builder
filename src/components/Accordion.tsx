@@ -21,9 +21,9 @@ export default function Accordion() {
                 <input type="radio" name="my-accordion-2" />
                 <div className="collapse-title font-semibold text-zinc-200">What is ATS / ATS-friendly?</div>
                 <div className="collapse-content text-sm flex flex-col gap-y-4 pr-[2rem] text-zinc-500">
-                    <p>ATS stands for <span className={'font-semibold'}>Applicant Tracking System.</span> It’s software used by companies to scan, filter, and
+                    <p>ATS stands for <span className={'font-semibold text-zinc-200'}>Applicant Tracking System.</span> It’s software used by companies to scan, filter, and
                         rank resumes before a human recruiter even sees them.</p>
-                    <p>An <span className={'font-semibold'}>ATS-friendly resume</span> is designed to be easily read by these systems. It avoids complex layouts,
+                    <p>An <span className={'font-semibold text-zinc-200'}>ATS-friendly resume</span> is designed to be easily read by these systems. It avoids complex layouts,
                         images, or formatting that could confuse the software, and instead uses clean structure,
                         standard fonts, and clear headings so your information can be correctly parsed and ranked.</p>
                     <p>In simple terms: ATS-friendly resumes make sure your application gets properly read — not ignored

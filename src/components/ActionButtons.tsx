@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Download, FileJson, FileText, Loader2 } from 'lucide-react'
 import { ResumData } from '@/types/resume'
+import { addToDownloadsCount } from '@/lib/actions'
 
 interface ActionButtonsProps {
   data: ResumData
@@ -54,7 +55,7 @@ export function ActionButtons({ data }: ActionButtonsProps) {
   const downloadAsPDF = async () => {
     setPdfLoading(true)
     setPdfError(null)
-
+    addToDownloadsCount()
     try {
       // Send the raw resume data — the server renders the PDF using @react-pdf/renderer
       const response = await fetch('/api/generate-pdf', {

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Bot, Loader2 } from 'lucide-react'
 import { ResumData } from '@/types/resume'
+import { addToReviewedResumeCount } from '@/lib/actions'
 
 interface ReviewData {
   score: number,
@@ -63,6 +64,7 @@ export default function ResumeReviewButton({ resume, setReviewData }: Props) {
             }
         ))
     })
+    addToReviewedResumeCount();
     setLoading(false);
   }
 
