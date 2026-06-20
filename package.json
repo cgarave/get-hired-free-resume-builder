@@ -1,6 +1,6 @@
 {
   "name": "get-hired",
-  "version": "2.0.2",
+  "version": "2.1.2",
   "description": "Free, open-source resume builder with customization",
   "private": true,
   "scripts": {

@@ -96,7 +96,7 @@ export default async function Home() {
                     <p>A modern open-source, ATS-friendly resume builder designed for professionals by professionals — fully customizable and 100% free forever.</p>
                     <p>A passion project by <Link href={'https://raveflores.vercel.app'} className='underline hover:text-zinc-200'>Rave Flores</Link>.</p>
                     <Link href={"/privacy-policy"} className='underline hover:text-zinc-200 w-fit'>Privacy Policy</Link>
-                    <p>Get Hired v2.0.0</p>
+                    <p>Get Hired v2.0.3</p>
                 </section>
                 <section className='md:w-1/2 space-y-4 text-sm'>
                     <h5 className='text-zinc-200 uppercase tracking-wider font-semibold text-xl font-serif'>A note from the creator</h5>

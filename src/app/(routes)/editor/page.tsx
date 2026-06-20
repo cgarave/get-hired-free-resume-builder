@@ -40,10 +40,10 @@ export default function Page() {
         <div className="flex flex-col md:h-screen md:overflow-hidden">
             {/* ── Header ── */}
             <header className="top-0 w-full shrink-0 z-40 border-b border-zinc-800 shadow-sm backdrop-blur-sm">
-                <nav className="flex items-center justify-between px-6 md:px-60 py-5 gap-x-4">
+                <nav className="flex items-center justify-between px-6 py-5 gap-x-4">
                     <div className='flex flex-col gap-y-1'>
                         <Link href={'/'}><h1 className="text-xl font-bold leading-tight font-serif italic">Get Hired</h1></Link>
-                        <p className='text-zinc-400 text-xs'>Note: Get Hired is currently being upgraded to v2. If you run into any critical bugs, please let me know — your feedback helps make the app better. <Link className='underline' href={'mailto:raevflores@gmail.com'}>Report</Link></p>
+                        <p className='text-zinc-400 text-xs'>Build a professional ATS-friendly resume in minutes. No account required. No subscriptions. No paywalls. Ever.</p>
                     </div>
                     {/* Mobile toggle */}
                     <button onClick={() => setMobileView(mobileView === 'editor' ? 'preview' : 'editor')}
@@ -68,12 +68,7 @@ export default function Page() {
             {/* ── Main Layout ── */}
             <div className="flex flex-1 min-h-0">
                 {/* Left — Editor */}
-                <div
-                    className={`
-            no-print shrink-0 w-full md:w-[380px] lg:w-[420px] border-r border-zinc-800
-            ${mobileView === 'editor' ? 'block' : 'hidden'} md:block
-          `}
-                >
+                <div className={`no-print shrink-0 w-full md:w-[380px] lg:w-[420px] border-r border-zinc-800 ${mobileView === 'editor' ? 'block' : 'hidden'} md:block`}>
                     <ResumeEditor
                         data={resume}
                         onUpdatePersonalInfo={updatePersonalInfo}
@@ -89,15 +84,10 @@ export default function Page() {
                 </div>
 
                 {/* Right — Paged Preview */}
-                <div
-                    className={`
-            flex-1 min-w-0 overflow-auto
-            ${mobileView === 'preview' ? 'block' : 'hidden'} md:block
-          `}
-                    style={{ padding: '24px' }}
-                >
+                <div className={`flex-1 min-w-0 overflow-auto ${mobileView === 'preview' ? 'block' : 'hidden'} md:block`} style={{ padding: '24px' }}>
                     {/* A4-width centering wrapper */}
                     <div className="mx-auto" style={{ maxWidth: 794 }}>
+                        <p className={'font-semibold text-xs text-zinc-500'}>A4</p>
                         <ResumePreview data={resume} />
                     </div>
                 </div>

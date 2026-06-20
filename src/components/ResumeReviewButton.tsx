@@ -78,7 +78,7 @@ export default function ResumeReviewButton({ resume, setReviewData }: Props) {
   return (
     <button disabled={isEmptyFields || resume.sections.length === 0 ? true : false} onClick={reviewResume} className="w-full py-2 bg-zinc-200 hover:scale-95 disabled:opacity-40 text-zinc-800 rounded font-medium text-sm flex items-center justify-center gap-1.5 transition-all duration-500">
       {loading ? <>
-                    <Bot size={20} className="animate-spin"/>
+                    <Loader2 size={20} className="animate-spin"/>
                     <span>Reviewing</span>
                 </>
                 : <>

@@ -415,23 +415,25 @@ export function ResumeEditor({
             }
           </ul>
         </div>
-        <div className={`text-zinc-200 border border-zinc-800 rounded-lg p-3 space-y-2 flex flex-col ${reviewData.bulletPointFeedback.length - 1 === 0 ? 'hidden' : ''}`}>
+        <div className={`text-zinc-500 border border-zinc-800 rounded-lg p-3 space-y-2 flex flex-col ${reviewData.bulletPointFeedback.length - 1 === 0 ? 'hidden' : ''}`}>
           <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Feedback</p>
           {
             reviewData.bulletPointFeedback.flatMap((feedback) => (
-              <div className='text-xs flex flex-col gap-y-2 p-2 border border-dashed border-zinc-800 rounded-lg'>
-                <p><span className='font-semibold'>Original:</span> {feedback.original}</p>
-                <p><span className='font-semibold'>Issue:</span> {feedback.issue}</p>
-                <p><span className='font-semibold'>Improved:</span> {feedback.improved}</p>
+              <div className='text-xs flex flex-col gap-y-2 p-2 border border-zinc-800 rounded-lg'>
+                <p><span className='font-semibold text-zinc-200'>Original:</span> {feedback.original}</p>
+                <p><span className='font-semibold text-zinc-200'>Issue:</span> {feedback.issue}</p>
+                <p><span className='font-semibold text-zinc-200'>Improved:</span> {feedback.improved}</p>
+                {/*<button className="font-semibold text-zinc-800 rounded bg-zinc-200 py-1 px-2">Use improved version</button>*/}
               </div>
             ))
           }
           {
             reviewData.otherFeedback.flatMap((feedback) => (
-              <div className='text-xs flex flex-col gap-y-2 p-2 border border-dashed border-zinc-800 rounded-lg'>
+              <div className='text-xs flex flex-col gap-y-2 p-2 border border-zinc-800 rounded-lg'>
                 <p><span className='font-semibold'>Original:</span> {feedback.original}</p>
                 <p><span className='font-semibold'>Issue:</span> {feedback.issue}</p>
                 <p><span className='font-semibold'>Improved:</span> {feedback.improved}</p>
+                {/*<button className="font-semibold text-zinc-800 rounded bg-zinc-200 py-1 px-2">Use improved version</button>*/}
               </div>
             ))
           }
