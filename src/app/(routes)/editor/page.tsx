@@ -70,8 +70,7 @@ export default function Page() {
                 {/* Left — Editor */}
                 <div
                     className={`
-            no-print shrink-0 w-full md:w-[380px] lg:w-[420px]
-            bg-white border-r border-slate-200
+            no-print shrink-0 w-full md:w-[380px] lg:w-[420px] border-r border-zinc-800
             ${mobileView === 'editor' ? 'block' : 'hidden'} md:block
           `}
                 >
@@ -92,7 +91,7 @@ export default function Page() {
                 {/* Right — Paged Preview */}
                 <div
                     className={`
-            flex-1 min-w-0 overflow-auto bg-slate-300
+            flex-1 min-w-0 overflow-auto
             ${mobileView === 'preview' ? 'block' : 'hidden'} md:block
           `}
                     style={{ padding: '24px' }}

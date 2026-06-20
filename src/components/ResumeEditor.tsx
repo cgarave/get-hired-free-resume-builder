@@ -104,35 +104,34 @@ export function ResumeEditor({
   }
 
   return (
-    <div className="h-full md:overflow-y-scroll divide-y divide-gray-200">
+    <div className="h-full md:overflow-y-scroll divide-y divide-zinc-800">
 
       {/* ── Customize (Collapsible) ── */}
       <div>
         <button
           onClick={() => setStyleOpen(!styleOpen)}
-          className="w-full flex items-center justify-between px-5 py-4 hover:bg-gray-50 transition-colors"
+          className="w-full flex items-center justify-between px-5 py-4 hover:bg-zinc-900 transition-colors"
         >
-          <div className="flex items-center gap-2 font-semibold text-gray-800">
-            <Sliders size={16} className="text-blue-600" />
+          <div className="flex items-center gap-2 font-medium text-zinc-200">
             Customize
           </div>
-          {styleOpen ? <ChevronUp size={16} className="text-gray-500" /> : <ChevronDown size={16} className="text-gray-500" />}
+          {styleOpen ? <ChevronUp size={16} className="text-zinc-500" /> : <ChevronDown size={16} className="text-zinc-500" />}
         </button>
 
         {styleOpen && (
-          <div className="px-5 pb-5 space-y-5 bg-blue-50/30 border-t border-blue-100">
+          <div className="px-5 pb-5 space-y-5 border-t border-zinc-800">
             {/* Font Size */}
             <div className="pt-4">
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Font Size</p>
+              <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Font Size</p>
               <div className="flex gap-2">
                 {(['small', 'medium', 'large'] as const).map((size) => (
                   <button
                     key={size}
                     onClick={() => onUpdateStyle('fontSize', size)}
-                    className={`flex-1 py-1.5 rounded text-sm font-medium border transition-colors ${
+                    className={`flex-1 py-1.5 rounded-full text-sm font-medium border transition-colors ${
                       data.style.fontSize === size
-                        ? 'bg-blue-600 text-white border-blue-600'
-                        : 'bg-white text-gray-700 border-gray-300 hover:border-blue-400'
+                        ? 'bg-zinc-300 text-zinc-800'
+                        : 'text-zinc-300 border-zinc-800 hover:border-zinc-500'
                     }`}
                   >
                     {size.charAt(0).toUpperCase() + size.slice(1)}
@@ -143,15 +142,15 @@ export function ResumeEditor({
 
             {/* Font Family */}
             <div>
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Font Family</p>
+              <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Font Family</p>
               <div className="space-y-1.5">
                 {(Object.entries(fontFamilyLabels) as [string, string][]).map(([key, label]) => (
                   <label
                     key={key}
-                    className={`flex items-center gap-3 px-3 py-2 rounded cursor-pointer border transition-colors ${
+                    className={`flex items-center gap-3 px-3 py-2 rounded-full text-sm font-medium cursor-pointer border transition-colors ${
                       data.style.fontFamily === key
-                        ? 'bg-blue-600 text-white border-blue-600'
-                        : 'bg-white text-gray-800 border-gray-200 hover:border-blue-300'
+                        ? 'bg-zinc-300 text-zinc-800'
+                        : 'text-zinc-300 border-zinc-800 hover:border-zinc-500'
                     }`}
                   >
                     <input
@@ -170,16 +169,16 @@ export function ResumeEditor({
 
             {/* Spacing */}
             <div>
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Spacing</p>
+              <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Spacing</p>
               <div className="flex gap-2">
                 {(['compact', 'normal', 'spacious'] as const).map((s) => (
                   <button
                     key={s}
                     onClick={() => onUpdateStyle('spacing', s)}
-                    className={`flex-1 py-1.5 rounded text-sm font-medium border transition-colors ${
+                    className={`flex-1 py-1.5 rounded-full text-sm font-medium border transition-colors ${
                       data.style.spacing === s
-                        ? 'bg-blue-600 text-white border-blue-600'
-                        : 'bg-white text-gray-700 border-gray-300 hover:border-blue-400'
+                        ? 'bg-zinc-300 text-zinc-800'
+                        : 'text-zinc-300 border-zinc-800 hover:border-zinc-500'
                     }`}
                   >
                     {s.charAt(0).toUpperCase() + s.slice(1)}
@@ -190,7 +189,7 @@ export function ResumeEditor({
 
             {/* Accent Color */}
             <div>
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Accent Color</p>
+              <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Accent Color</p>
               <div className="flex gap-2 flex-wrap mb-2">
                 {ACCENT_COLORS.map((c) => (
                   <button
@@ -198,7 +197,7 @@ export function ResumeEditor({
                     onClick={() => onUpdateStyle('accent', c.value)}
                     title={c.name}
                     className={`w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 ${
-                      data.style.accent === c.value ? 'border-gray-900 scale-110 ring-2 ring-offset-1 ring-gray-400' : 'border-transparent'
+                      data.style.accent === c.value ? 'scale-110 border border-zinc-200' : 'border-transparent'
                     }`}
                     style={{ backgroundColor: c.value }}
                   />
@@ -209,12 +208,12 @@ export function ResumeEditor({
                   type="color"
                   value={data.style.accent}
                   onChange={(e) => onUpdateStyle('accent', e.target.value)}
-                  className="w-9 h-9 rounded cursor-pointer border border-gray-300"
+                  className="w-9 h-9 cursor-pointer"
                 />
-                <code className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600 flex-1">{data.style.accent}</code>
+                <code className="text-xs bg-gray-100 px-2 py-1 rounded text-zinc-800 flex-1">{data.style.accent}</code>
                 <button
                   onClick={onReset}
-                  className="flex items-center gap-1 text-xs text-red-600 hover:text-red-700 px-2 py-1 rounded hover:bg-red-50 border border-red-200">
+                  className="flex items-center gap-1 text-xs text-zinc-200 px-2 py-1 rounded-full border border-zinc-800 hover:bg-red-600 hover:text-zinc-200">
                   <RotateCcw size={12} /> Reset Resume Content
                 </button>
               </div>
@@ -227,14 +226,14 @@ export function ResumeEditor({
       <div>
         <button
           onClick={() => setPersonalOpen(!personalOpen)}
-          className="w-full flex items-center justify-between px-5 py-4 hover:bg-gray-50 transition-colors"
+          className="w-full flex items-center justify-between px-5 py-4 hover:hover:bg-zinc-900 transition-colors"
         >
-          <span className="font-semibold text-gray-800">Personal Information</span>
-          {personalOpen ? <ChevronUp size={16} className="text-gray-500" /> : <ChevronDown size={16} className="text-gray-500" />}
+          <span className="flex items-center gap-2 font-medium text-zinc-200">Personal Information</span>
+          {personalOpen ? <ChevronUp size={16} className="text-zinc-500" /> : <ChevronDown size={16} className="text-zinc-500" />}
         </button>
 
         {personalOpen && (
-          <div className="px-5 pb-5 space-y-3 border-t border-gray-100 text-black"> {/* Added text-black to temporarily fix the global white text issue */}
+          <div className="px-5 py-5 space-y-3 border-t border-zinc-800">
             {(
               [
                 ['fullName', 'Full Name', 'text'],
@@ -246,12 +245,12 @@ export function ResumeEditor({
               ] as const
             ).map(([field, label, type]) => (
               <div key={field} className="pt-1">
-                <label className="block text-xs font-medium text-gray-600 mb-1">{label}</label>
+                <label className="block text-xs uppercase font-semibold text-zinc-500 mb-1">{label}</label>
                 <input
                   type={type}
                   value={data.personalInfo[field]}
                   onChange={(e) => onUpdatePersonalInfo(field, e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-zinc-800 rounded-md text-sm focus:outline-zinc-500"
                 />
               </div>
             ))}
@@ -261,32 +260,32 @@ export function ResumeEditor({
 
       {/* ── Sections ── */}
       <div className="px-5 py-4">
-        <p className="font-semibold text-gray-800 mb-3">Sections</p>
+        <p className="font-medium text-zinc-200 mb-3">Sections</p>
 
         <div className="space-y-2 mb-4">
           {data.sections.map((section) => (
-            <div key={section.id} className="border border-gray-200 rounded-lg overflow-hidden text-black"> {/* Added text-black to temporarily fix the global white text issue */}
+            <div key={section.id} className="border border-zinc-800 rounded-lg overflow-hidden">
               {/* Section header */}
-              <div className="flex items-center bg-gray-50 hover:bg-gray-100 transition-colors">
+              <div className="flex items-center hover:bg-zinc-900 transition-colors">
                 <button
                   className="flex items-center gap-2 flex-1 p-3 text-left"
                   onClick={() => toggleSection(section.id)}
                 >
                   {expandedSections.has(section.id)
-                    ? <ChevronUp size={16} className="text-gray-500 shrink-0" />
-                    : <ChevronDown size={16} className="text-gray-500 shrink-0" />}
+                    ? <ChevronUp size={16} className="text-zinc-500 shrink-0" />
+                    : <ChevronDown size={16} className="text-zinc-500 shrink-0" />}
                   <input
                     type="text"
                     value={section.title}
                     onChange={(e) => onUpdateSectionTitle(section.id, e.target.value)}
                     onClick={(e) => e.stopPropagation()}
-                    className="font-semibold text-sm text-gray-800 bg-transparent border-0 focus:outline-none focus:ring-1 focus:ring-blue-400 rounded px-1 flex-1 min-w-0"
+                    className="font-semibold text-sm text-zinc-200 focus:outline-zinc-500 rounded px-1 flex-1 min-w-0"
                   />
                 </button>
                 {/* Delete button — available on ALL sections */}
                 <button
                   onClick={() => onDeleteSection(section.id)}
-                  className="p-3 text-red-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+                  className="p-3 text-red-400 hover:text-red-600 transition-colors"
                   title="Delete section"
                 >
                   <Trash2 size={15} />
@@ -295,7 +294,7 @@ export function ResumeEditor({
 
               {/* Entries */}
               {expandedSections.has(section.id) && (
-                <div className="p-3 space-y-3 border-t border-gray-100 bg-white">
+                <div className="p-3 space-y-3 border-t border-zinc-800">
                   {section.entries.length === 0 && (
                     <p className="text-xs text-gray-400 italic text-center py-2">No entries yet — click Add Entry below.</p>
                   )}
@@ -303,26 +302,21 @@ export function ResumeEditor({
                   {section.entries.map((entry, idx) => (
                     <div
                       key={entry.id}
-                      className={`space-y-2 ${idx < section.entries.length - 1 ? 'pb-3 border-b border-dashed border-gray-200' : ''}`}
+                      className={`space-y-2 ${idx < section.entries.length - 1 ? 'pb-3 border-b border-zinc-800' : ''}`}
                     >
                       {getEntryFields(section.id, entry as Record<string, string | undefined>).map(([key, value]) => (
                         <div key={key}>
-                          <label className="block text-xs font-medium text-gray-500 mb-0.5">
+                          <label className="block text-xs uppercase font-medium text-zinc-500 mb-0.5">
                             {fieldLabels[key] ?? key}
                           </label>
                           <textarea
                             value={(value as string) ?? ''}
                             onChange={(e) => onUpdateEntry(section.id, entry.id, key, e.target.value)}
-                            placeholder={
-                              key === 'description'
-                                ? 'Each line becomes a bullet point…'
-                                : (fieldLabels[key] ?? key)
-                            }
                             rows={key === 'description' ? 4 : key === 'skills' ? 3 : 1}
-                            className="w-full px-2 py-1.5 border border-gray-300 rounded text-sm resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent leading-relaxed"
+                            className="w-full px-3 py-2 border border-zinc-800 rounded-md text-sm focus:outline-zinc-500 resize-none"
                           />
                           {key === 'description' && (
-                            <p className="text-[10px] text-gray-400 mt-0.5">↵ Each new line = one bullet point in the preview</p>
+                            <p className="text-[10px] text-gray-400 mt-0.5">↵ Each description new line = one bullet point in the preview</p>
                           )}
                         </div>
                       ))}
@@ -338,9 +332,8 @@ export function ResumeEditor({
 
                   <button
                     onClick={() => onAddEntry(section.id)}
-                    className="w-full py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded border border-blue-200 text-sm font-medium flex items-center justify-center gap-1.5 transition-colors"
-                  >
-                    <Plus size={15} /> Add Entry
+                    className="w-full py-2 bg-zinc-200 hover:scale-95 disabled:opacity-40 text-zinc-800 rounded font-medium text-sm flex items-center justify-center gap-1.5 transition-all duration-500">
+                    Add Entry
                   </button>
                 </div>
               )}
@@ -349,39 +342,40 @@ export function ResumeEditor({
         </div>
 
         {/* Add new section */}
-        <div className="border border-dashed border-gray-300 rounded-lg p-3 space-y-2 text-black"> {/* Added text-black to temporarily fix the global white text issue */}
-          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Add New Section</p>
+        <div className="border border-zinc-800 rounded-lg p-3 space-y-2">
+          <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Add New Section</p>
           <input
             type="text"
             value={newSectionTitle}
             onChange={(e) => setNewSectionTitle(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleAddSection()}
             placeholder="Section name (e.g. Languages, Volunteer)"
-            className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-zinc-800 rounded-md text-sm focus:outline-zinc-500"
           />
           <select
             value={newSectionType}
             onChange={(e) => setNewSectionType(e.target.value as SectionType)}
-            className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-blue-500 bg-white"
+            className="w-full px-2 py-2 border border-zinc-800 rounded-md text-sm focus:outline-none"
           >
-            <option value="experience">Experience style (position, company, duration…)</option>
-            <option value="education">Education style (degree, school, graduation…)</option>
-            <option value="skills">Skills style (skills list)</option>
-            <option value="custom">Custom style (title, organization, date…)</option>
+            <option className={'bg-zinc-800'} value="experience">Experience style (position, company, duration…)</option>
+            <option className={'bg-zinc-800'} value="education">Education style (degree, school, graduation…)</option>
+            <option className={'bg-zinc-800'} value="skills">Skills style (skills list)</option>
+            <option className={'bg-zinc-800'} value="custom">Custom style (title, organization, date…)</option>
           </select>
           <button
             onClick={handleAddSection}
             disabled={!newSectionTitle.trim()}
-            className="w-full py-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white rounded font-medium text-sm flex items-center justify-center gap-1.5 transition-colors"
+            className="w-full py-2 bg-zinc-200 hover:scale-95 disabled:opacity-40 text-zinc-800 rounded font-medium text-sm flex items-center justify-center gap-1.5 transition-all duration-500"
           >
             <Plus size={15} /> Add Section
           </button>
         </div>
       </div>
+
       {/*Review button*/}
       <div className='px-5 py-4 flex flex-col gap-y-3'>
         <div className='flex flex-col gap-y-1'>
-          <p className="font-semibold text-gray-800">Review with Bard AI</p>
+          <p className="font-medium text-zinc-200">Review with Bard AI</p>
           <div className='text-xs text-gray-400'>
             <span>Disclaimer: Your resume will be processed by an AI service (Bard) to generate feedback. No data is permanently stored. </span>
             <div className="tooltip tooltip-right">
@@ -390,8 +384,8 @@ export function ResumeEditor({
             </div>
           </div>
         </div>
-        <div className="border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col text-gray-800">
-          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Score</p>
+        <div className="border border-zinc-800 rounded-lg p-3 space-y-2 flex flex-col text-zinc-200">
+          <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Score</p>
           <h1 className='self-center text-4xl font-bold'>{reviewData.score ? reviewData.score : 0}</h1>
           <div className='text-xs self-center'>
             <p>{reviewData.score >= 90 ? 'Excellent ATS-ready resume' : ''}</p>
@@ -401,8 +395,8 @@ export function ResumeEditor({
             <p>{reviewData.score < 60 && reviewData.score > 1 ? 'High rejection risk' : ''}</p>
           </div>
         </div>
-        <div className={`text-gray-800 border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col transition-all duration-2000 ease-in-out ${reviewData.issues.length - 1 === 0 ? 'hidden opacity-0' : 'opacity-100'}`}>
-          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{reviewData.issues.length} Found Issues</p>
+        <div className={`text-zinc-200 border border-zinc-800 rounded-lg p-3 space-y-2 flex flex-col transition-all duration-2000 ease-in-out ${reviewData.issues.length - 1 === 0 ? 'hidden opacity-0' : 'opacity-100'}`}>
+          <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">{reviewData.issues.length} Found Issues</p>
           <ul className='list-disc list-inside text-xs space-y-2'>
             {
               reviewData.issues.flatMap(issue => (
@@ -411,8 +405,8 @@ export function ResumeEditor({
             }
           </ul>
         </div>
-        <div className={`text-gray-800 border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col ${reviewData.improvements.length - 1 === 0 ? 'hidden' : ''}`}>
-          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{reviewData.improvements.length} Improvements</p>
+        <div className={`text-zinc-200 border border-zinc-800 rounded-lg p-3 space-y-2 flex flex-col ${reviewData.improvements.length - 1 === 0 ? 'hidden' : ''}`}>
+          <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">{reviewData.improvements.length} Improvements</p>
           <ul className='list-disc list-inside text-xs space-y-2'>
             {
               reviewData.improvements.flatMap(improvement => (
@@ -421,11 +415,11 @@ export function ResumeEditor({
             }
           </ul>
         </div>
-        <div className={`text-gray-800 border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col ${reviewData.bulletPointFeedback.length - 1 === 0 ? 'hidden' : ''}`}>
-          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Feedback</p>
+        <div className={`text-zinc-200 border border-zinc-800 rounded-lg p-3 space-y-2 flex flex-col ${reviewData.bulletPointFeedback.length - 1 === 0 ? 'hidden' : ''}`}>
+          <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Feedback</p>
           {
             reviewData.bulletPointFeedback.flatMap((feedback) => (
-              <div className='text-xs flex flex-col gap-y-2 p-2 border border-dashed border-gray-300 rounded-lg'>
+              <div className='text-xs flex flex-col gap-y-2 p-2 border border-dashed border-zinc-800 rounded-lg'>
                 <p><span className='font-semibold'>Original:</span> {feedback.original}</p>
                 <p><span className='font-semibold'>Issue:</span> {feedback.issue}</p>
                 <p><span className='font-semibold'>Improved:</span> {feedback.improved}</p>
@@ -434,7 +428,7 @@ export function ResumeEditor({
           }
           {
             reviewData.otherFeedback.flatMap((feedback) => (
-              <div className='text-xs flex flex-col gap-y-2 p-2 border border-dashed border-gray-300 rounded-lg'>
+              <div className='text-xs flex flex-col gap-y-2 p-2 border border-dashed border-zinc-800 rounded-lg'>
                 <p><span className='font-semibold'>Original:</span> {feedback.original}</p>
                 <p><span className='font-semibold'>Issue:</span> {feedback.issue}</p>
                 <p><span className='font-semibold'>Improved:</span> {feedback.improved}</p>

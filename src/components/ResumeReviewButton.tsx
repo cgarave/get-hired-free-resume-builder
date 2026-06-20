@@ -76,14 +76,14 @@ export default function ResumeReviewButton({ resume, setReviewData }: Props) {
                         resume.personalInfo.phone.length === 0
   
   return (
-    <button disabled={isEmptyFields || resume.sections.length === 0 ? true : false} onClick={reviewResume} className="w-full py-2 bg-violet-600 hover:bg-violet-700 disabled:opacity-40 text-white rounded font-medium text-sm flex items-center justify-center gap-1.5 transition-colors cursor-pointer">
+    <button disabled={isEmptyFields || resume.sections.length === 0 ? true : false} onClick={reviewResume} className="w-full py-2 bg-zinc-200 hover:scale-95 disabled:opacity-40 text-zinc-800 rounded font-medium text-sm flex items-center justify-center gap-1.5 transition-all duration-500">
       {loading ? <>
-                    <Loader2 size={20} className="animate-spin"/>
+                    <Bot size={20} className="animate-spin"/>
                     <span>Reviewing</span>
-                </> 
+                </>
                 : <>
-                    <span>Review Resume</span>
                     <Bot size={20} />
+                    <span>Review Resume</span>
                 </>}
       
     </button>
