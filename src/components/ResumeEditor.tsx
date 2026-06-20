@@ -151,7 +151,7 @@ export function ResumeEditor({
                     className={`flex items-center gap-3 px-3 py-2 rounded cursor-pointer border transition-colors ${
                       data.style.fontFamily === key
                         ? 'bg-blue-600 text-white border-blue-600'
-                        : 'bg-white border-gray-200 hover:border-blue-300'
+                        : 'bg-white text-gray-800 border-gray-200 hover:border-blue-300'
                     }`}
                   >
                     <input
@@ -390,7 +390,7 @@ export function ResumeEditor({
             </div>
           </div>
         </div>
-        <div className="border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col">
+        <div className="border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col text-gray-800">
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Score</p>
           <h1 className='self-center text-4xl font-bold'>{reviewData.score ? reviewData.score : 0}</h1>
           <div className='text-xs self-center'>
@@ -401,7 +401,7 @@ export function ResumeEditor({
             <p>{reviewData.score < 60 && reviewData.score > 1 ? 'High rejection risk' : ''}</p>
           </div>
         </div>
-        <div className={`border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col transition-all duration-2000 ease-in-out ${reviewData.issues.length - 1 === 0 ? 'hidden opacity-0' : 'opacity-100'}`}>
+        <div className={`text-gray-800 border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col transition-all duration-2000 ease-in-out ${reviewData.issues.length - 1 === 0 ? 'hidden opacity-0' : 'opacity-100'}`}>
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{reviewData.issues.length} Found Issues</p>
           <ul className='list-disc list-inside text-xs space-y-2'>
             {
@@ -411,7 +411,7 @@ export function ResumeEditor({
             }
           </ul>
         </div>
-        <div className={`border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col ${reviewData.improvements.length - 1 === 0 ? 'hidden' : ''}`}>
+        <div className={`text-gray-800 border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col ${reviewData.improvements.length - 1 === 0 ? 'hidden' : ''}`}>
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{reviewData.improvements.length} Improvements</p>
           <ul className='list-disc list-inside text-xs space-y-2'>
             {
@@ -421,7 +421,7 @@ export function ResumeEditor({
             }
           </ul>
         </div>
-        <div className={`border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col ${reviewData.bulletPointFeedback.length - 1 === 0 ? 'hidden' : ''}`}>
+        <div className={`text-gray-800 border border-dashed border-gray-300 rounded-lg p-3 space-y-2 flex flex-col ${reviewData.bulletPointFeedback.length - 1 === 0 ? 'hidden' : ''}`}>
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Feedback</p>
           {
             reviewData.bulletPointFeedback.flatMap((feedback) => (
